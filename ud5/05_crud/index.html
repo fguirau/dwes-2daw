@@ -1,0 +1,2273 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Desarrollo Web en Entorno Servidor - 2º DAW - IES Torrevigía">
+      
+      
+        <meta name="author" content="Francisco J. Guirau López">
+      
+      
+      
+        <link rel="prev" href="../04_factory_seeder_faker/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>5.5 Operaciones CRUD - DWES - 2º DAW</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud55-introduccion-a-crud" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="DWES - 2º DAW" class="md-header__button md-logo" aria-label="DWES - 2º DAW" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES - 2º DAW
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5.5 Operaciones CRUD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ud1/01_introduccion_arquitectura/" class="md-tabs__link">
+          
+  
+  
+  UD1 - Intro
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ud2/01_lenguaje_php/" class="md-tabs__link">
+          
+  
+  
+  UD2 - El Lenguaje PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ud3/01_programacion_web/" class="md-tabs__link">
+          
+  
+  
+  UD3 - Programación Web
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ud4/01_acceso_bd_pdo/" class="md-tabs__link">
+          
+  
+  
+  UD4 - BD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01_vistas_rutas_layouts/" class="md-tabs__link">
+          
+  
+  
+  UD5 - Framework Laravel
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES - 2º DAW" class="md-nav__button md-logo" aria-label="DWES - 2º DAW" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES - 2º DAW
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1 - Intro
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD1 - Intro
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud1/01_introduccion_arquitectura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 Arquitectura y entorno de trabajo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2 - El Lenguaje PHP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD2 - El Lenguaje PHP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud2/01_lenguaje_php/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 Sintaxis básica, variables y operadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud2/02_estructuras_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Estructuras de control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud2/03_arrays_matrices_cadenas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Arrays, matrices y cadenas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud2/04_funciones_recursividad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Funciones y recursividad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3 - Programación Web
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD3 - Programación Web
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud3/01_programacion_web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Programación Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud3/02_funciones_formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Funciones para procesar Formularios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4 - BD
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD4 - BD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud4/01_acceso_bd_pdo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Acceso a BD con PDO. Operaciones CRUD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud4/02_enviar_email_phpmailer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Enviar Email con phpMailer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud4/03_contrasenas_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Inserción y Recuperación de Contraseñas en ls BD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD5 - Framework Laravel
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD5 - Framework Laravel
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_vistas_rutas_layouts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Rutas, Vistas, Layouts, Partials y Componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_migraciones_modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 Migraciones y Modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_controladores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 Controladores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_factory_seeder_faker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 Factory, Seeders y Faker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 Operaciones CRUD
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 Operaciones CRUD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es CRUD?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circuito-mvc-rapido-para-rutas-dinamicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Circuito MVC rápido para rutas dinámicas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Circuito MVC rápido para rutas dinámicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelo-y-migracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modelo y migración
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelo-nota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modelo Nota
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controlador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruta-dinamica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ruta dinámica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vista-de-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vista de prueba
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desarrollo-del-crud-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desarrollo del CRUD completo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Desarrollo del CRUD completo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layout base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-listar-todas-las-notas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R — Listar todas las notas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-crear-una-nueva-nota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C — Crear una nueva nota
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#u-editar-y-actualizar-una-nota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        U — Editar y actualizar una nota
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-mostrar-una-nota-individual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R — Mostrar una nota individual
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-eliminar-una-nota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D — Eliminar una nota
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validación de datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validación de datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-validar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué validar?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clase-formrequest-personalizada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clase FormRequest personalizada
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clase FormRequest personalizada">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodo-authorize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Método authorize()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodo-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Método rules()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodo-messages-mensajes-personalizados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Método messages() — mensajes personalizados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uso-en-el-controlador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uso en el controlador
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mensajes-de-exito-y-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mensajes de éxito y errores
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mensajes de éxito y errores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mostrar-mensajes-de-exito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mostrar mensajes de éxito
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mostrar-errores-de-validacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mostrar errores de validación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recordar-valores-enviados-con-old" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recordar valores enviados con old()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confirmacion-de-eliminacion-con-modal-bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confirmación de eliminación con modal Bootstrap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Confirmación de eliminación con modal Bootstrap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modal-en-indexbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modal en index.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adelanto-relaciones-entre-modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adelanto: relaciones entre modelos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adelanto: relaciones entre modelos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#claves-ajenas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claves ajenas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabla-puente-para-relaciones-muchos-a-muchos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla puente para relaciones Muchos a Muchos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-de-rutas-del-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumen de rutas del CRUD
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ud55-introduccion-a-crud">UD5.5 - Introducción a CRUD</h1>
+<h2 id="que-es-crud">¿Qué es CRUD?</h2>
+<p>El término <strong>CRUD</strong> corresponde a las cuatro operaciones básicas sobre datos:</p>
+<table>
+<thead>
+<tr>
+<th>Operación</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C</strong>reate</td>
+<td>Insertar nuevos datos</td>
+</tr>
+<tr>
+<td><strong>R</strong>ead</td>
+<td>Consultar y visualizar datos</td>
+</tr>
+<tr>
+<td><strong>U</strong>pdate</td>
+<td>Modificar datos existentes</td>
+</tr>
+<tr>
+<td><strong>D</strong>elete</td>
+<td>Borrar datos</td>
+</tr>
+</tbody>
+</table>
+<p>En Laravel, implementar un CRUD completo nos permite comprender cómo <strong>Modelos</strong>, <strong>Controladores</strong> y <strong>Vistas</strong> interactúan entre sí. Además, este tema nos sirve para aprender el funcionamiento de los <strong>formularios</strong> en Laravel.</p>
+<hr />
+<h2 id="circuito-mvc-rapido-para-rutas-dinamicas">Circuito MVC rápido para rutas dinámicas</h2>
+<p>Antes de desarrollar el CRUD completo, veamos cómo crear un circuito MVC básico con rutas dinámicas.</p>
+<h3 id="modelo-y-migracion">Modelo y migración</h3>
+<p>Vamos a usar una tabla <code>notas</code> con los campos:</p>
+<ul>
+<li><code>id</code> — entero, autoincremental</li>
+<li><code>titulo</code> — string</li>
+<li><code>descripcion</code> — text</li>
+<li><code>fecha</code> — date</li>
+<li><code>realizada</code> — boolean</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Nota<span class="w"> </span>-m
+</code></pre></div>
+<p>En la migración creada:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">public function up()</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="x">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="x">    Schema::create(&#39;notas&#39;, function (Blueprint $table) {</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="x">        $table-&gt;id();</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="x">        $table-&gt;string(&#39;titulo&#39;);</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="x">        $table-&gt;text(&#39;descripcion&#39;);</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="x">        $table-&gt;date(&#39;fecha&#39;);</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="x">        $table-&gt;boolean(&#39;realizada&#39;)-&gt;default(false);</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="x">        $table-&gt;timestamps();</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="x">    });</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="x">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="x">public function down()</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="x">{</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="x">    Schema::dropIfExists(&#39;notas&#39;);</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="x">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>migrate
+</code></pre></div>
+<h3 id="modelo-nota">Modelo Nota</h3>
+<p>Definimos los campos con asignación masiva permitida:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">namespace App\Models;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">use Illuminate\Database\Eloquent\Model;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">class Nota extends Model</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="x">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="x">    protected $fillable = [&#39;titulo&#39;, &#39;descripcion&#39;, &#39;fecha&#39;, &#39;realizada&#39;];</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="x">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">¿Y <code>$guarded</code>?</p>
+<p>Como vimos en UD5.2, <code>$fillable</code> y <code>$guarded</code> son alternativas, no se combinan. Con <code>$fillable</code> definido, cualquier otro campo —incluido <code>id</code>— queda protegido automáticamente frente a la asignación masiva. No hace falta añadir <code>$guarded = ['id']</code>.</p>
+</div>
+<h3 id="controlador">Controlador</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>NotaController
+</code></pre></div>
+<p>Método de prueba para recibir un parámetro dinámico:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="x">public function show($id)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="x">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="x">    return view(&#39;notas.show&#39;, compact(&#39;id&#39;));</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="x">}</span>
+</code></pre></div>
+<h3 id="ruta-dinamica">Ruta dinámica</h3>
+<p>En <code>routes/web.php</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="x">use App\Http\Controllers\NotaController;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="x">Route::get(&#39;/nota/{id}&#39;, [NotaController::class, &#39;show&#39;])-&gt;name(&#39;nota.show&#39;);</span>
+</code></pre></div>
+<h3 id="vista-de-prueba">Vista de prueba</h3>
+<p><code>resources/views/notas/show.blade.php</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>&lt;h1&gt;Detalle de Nota&lt;/h1&gt;
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>&lt;p&gt;El ID de la nota es: {{ $id }}&lt;/p&gt;
+</code></pre></div>
+<p>Accediendo a <code>/nota/2</code> se muestra: <em>El ID de la nota es: 2</em>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Antes de seguir: retira esta ruta de prueba</p>
+<p>Esta ruta (<code>/nota/{id}</code>) y la vista <code>notas/show.blade.php</code> eran solo para practicar cómo Laravel captura un parámetro dinámico de la URL. Antes de continuar con el CRUD completo, <strong>elimina esta ruta</strong> de <code>routes/web.php</code>. Hay dos motivos:</p>
+<ol>
+<li>En el CRUD real usaremos <code>nota.mostrar</code> (más adelante), con inyección de modelo, que es la versión completa de esto mismo — no necesitamos mantener las dos.</li>
+<li>Si la dejas, <strong>el orden importa</strong>: <code>/nota/{id}</code> y <code>/nota/crear</code> tienen la misma forma (<code>/nota/</code> + un segmento). Si <code>/nota/{id}</code> se define primero, Laravel la hará coincidir antes y <code>/nota/crear</code> quedará "tapada" — al pulsar "Crear Nota" verías el mensaje "El ID de la nota es: crear" en lugar del formulario. Regla general: las rutas con parámetros (<code>{id}</code>) deben declararse <strong>después</strong> de las rutas estáticas más específicas, o eliminarse si ya no se usan.</li>
+</ol>
+</div>
+<hr />
+<h2 id="desarrollo-del-crud-completo">Desarrollo del CRUD completo</h2>
+<h3 id="layout-base">Layout base</h3>
+<p><code>resources/views/layouts/notas.blade.php</code>:</p>
+<div class="highlight"><span class="filename">layouts/notas.blade.php</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>&lt;!DOCTYPE html&gt;
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>&lt;html lang=&quot;es&quot;&gt;
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>&lt;head&gt;
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    &lt;meta charset=&quot;UTF-8&quot;&gt;
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    &lt;title&gt;@yield(&#39;title&#39;)&lt;/title&gt;
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    &lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css&quot;
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>          rel=&quot;stylesheet&quot;&gt;
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>&lt;/head&gt;
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>&lt;body&gt;
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    &lt;header&gt;
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>        &lt;h1&gt;Mi Aplicación de Notas&lt;/h1&gt;
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>        &lt;nav&gt;
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>            &lt;a href=&quot;{{ route(&#39;nota.index&#39;) }}&quot;&gt;Inicio&lt;/a&gt; |
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>            &lt;a href=&quot;{{ route(&#39;nota.crear&#39;) }}&quot;&gt;Crear Nota&lt;/a&gt;
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>        &lt;/nav&gt;
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>    &lt;/header&gt;
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>    &lt;main class=&quot;container&quot;&gt;
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>        @yield(&#39;content&#39;)
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>    &lt;/main&gt;
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>&lt;/body&gt;
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>&lt;/html&gt;
+</code></pre></div>
+<hr />
+<h3 id="r-listar-todas-las-notas">R — Listar todas las notas</h3>
+<p><strong>Ruta:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="x">Route::get(&#39;/&#39;, [NotaController::class, &#39;index&#39;])-&gt;name(&#39;nota.index&#39;);</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Sustituye la ruta de bienvenida, no la dupliques</p>
+<p>Un proyecto Laravel nuevo ya incluye <code>Route::get('/', function () { return view('welcome'); });</code> en <code>routes/web.php</code>. <strong>Sustituye esa línea</strong> por la de arriba; no añadas una segunda ruta para <code>/</code>. Si dejas las dos, gana la primera que aparezca en el archivo, y <code>nota.index</code> podría no llegar a ejecutarse nunca aunque el código sea correcto.</p>
+</div>
+<p><strong>Controlador:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="x">use App\Models\Nota;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="x">public function index()</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="x">{</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="x">    $notas = Nota::all();</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="x">    return view(&#39;notas.index&#39;, compact(&#39;notas&#39;));</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="x">}</span>
+</code></pre></div>
+<p><strong>Vista</strong> <code>resources/views/notas/index.blade.php</code>:</p>
+<div class="highlight"><span class="filename">notas/index.blade.php</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>@extends(&#39;layouts.notas&#39;)
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>@section(&#39;title&#39;, &#39;Listado de Notas&#39;)
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>@section(&#39;content&#39;)
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    &lt;h2&gt;Listado de Notas&lt;/h2&gt;
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    @forelse ($notas as $nota)
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>        &lt;div&gt;
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>            &lt;h3&gt;&lt;a href=&quot;{{ route(&#39;nota.mostrar&#39;, $nota-&gt;id) }}&quot;&gt;{{ $nota-&gt;titulo }}&lt;/a&gt;&lt;/h3&gt;
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>            &lt;p&gt;{{ $nota-&gt;descripcion }}&lt;/p&gt;
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>            &lt;small&gt;{{ $nota-&gt;fecha }}&lt;/small&gt;
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>            &lt;div&gt;
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>                &lt;a href=&quot;{{ route(&#39;nota.editar&#39;, $nota-&gt;id) }}&quot; class=&quot;btn btn-warning&quot;&gt;Editar&lt;/a&gt;
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>                &lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot; data-bs-toggle=&quot;modal&quot;
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>                        data-bs-target=&quot;#modalEliminar&quot;
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>                        data-id=&quot;{{ $nota-&gt;id }}&quot;
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>                        data-titulo=&quot;{{ $nota-&gt;titulo }}&quot;&gt;
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>                    Eliminar
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>                &lt;/button&gt;
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>            &lt;/div&gt;
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>        &lt;/div&gt;
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>    @empty
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>        &lt;p&gt;No hay notas disponibles.&lt;/p&gt;
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>    @endforelse
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>@endsection
+</code></pre></div>
+<hr />
+<h3 id="c-crear-una-nueva-nota">C — Crear una nueva nota</h3>
+<p>Necesitamos tres elementos: ruta del formulario, método del controlador y vista.</p>
+<p><strong>Ruta:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="x">Route::get(&#39;/nota/crear&#39;, [NotaController::class, &#39;crear&#39;])-&gt;name(&#39;nota.crear&#39;);</span>
+</code></pre></div>
+<p><strong>Controlador:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="x">public function crear()</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="x">{</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="x">    return view(&#39;notas.crear&#39;);</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="x">}</span>
+</code></pre></div>
+<p><strong>Vista</strong> <code>resources/views/notas/crear.blade.php</code>:</p>
+<div class="highlight"><span class="filename">notas/crear.blade.php</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>@extends(&#39;layouts.notas&#39;)
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>@section(&#39;title&#39;, &#39;Crear Nueva Nota&#39;)
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>@section(&#39;content&#39;)
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    &lt;h2&gt;Crear Nueva Nota&lt;/h2&gt;
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    &lt;div class=&quot;row&quot;&gt;
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>        &lt;div class=&quot;col-md-6&quot;&gt;
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>            &lt;form action=&quot;{{ route(&#39;nota.guardar&#39;) }}&quot; method=&quot;POST&quot;&gt;
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>                @csrf
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>                &lt;div&gt;
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>                    &lt;label&gt;Título:&lt;/label&gt;
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>                    &lt;input type=&quot;text&quot; name=&quot;titulo&quot;
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>                           class=&quot;form-control @error(&#39;titulo&#39;) is-invalid @enderror&quot;
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>                           value=&quot;{{ old(&#39;titulo&#39;) }}&quot;&gt;
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>                    @error(&#39;titulo&#39;)
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>                        &lt;div class=&quot;text-danger&quot;&gt;&lt;p&gt;{{ $message }}&lt;/p&gt;&lt;/div&gt;
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>                    @enderror
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>                &lt;/div&gt;
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>                &lt;div&gt;
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>                    &lt;label&gt;Descripción:&lt;/label&gt;
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>                    &lt;textarea name=&quot;descripcion&quot; class=&quot;form-control @error(&#39;descripcion&#39;) is-invalid @enderror&quot;&gt;{{ old(&#39;descripcion&#39;) }}&lt;/textarea&gt;
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>                    @error(&#39;descripcion&#39;)
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>                        &lt;div class=&quot;text-danger&quot;&gt;&lt;p&gt;{{ $message }}&lt;/p&gt;&lt;/div&gt;
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>                    @enderror
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>                &lt;/div&gt;
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>                &lt;div&gt;
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a>                    &lt;label&gt;Fecha:&lt;/label&gt;
+<a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>                    &lt;input type=&quot;date&quot; name=&quot;fecha&quot;
+<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a>                           class=&quot;form-control @error(&#39;fecha&#39;) is-invalid @enderror&quot;
+<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a>                           value=&quot;{{ old(&#39;fecha&#39;) }}&quot;&gt;
+<a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a>                    @error(&#39;fecha&#39;)
+<a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a>                        &lt;div class=&quot;text-danger&quot;&gt;&lt;p&gt;{{ $message }}&lt;/p&gt;&lt;/div&gt;
+<a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a>                    @enderror
+<a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a>                &lt;/div&gt;
+<a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a>                &lt;div&gt;
+<a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a>                    &lt;label&gt;Completada:&lt;/label&gt;
+<a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a>                    &lt;input type=&quot;checkbox&quot; name=&quot;realizada&quot; class=&quot;form-check-input&quot;
+<a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a>                           value=&quot;1&quot; {{ old(&#39;realizada&#39;) ? &#39;checked&#39; : &#39;&#39; }}&gt;
+<a id="__codelineno-14-38" name="__codelineno-14-38" href="#__codelineno-14-38"></a>                &lt;/div&gt;
+<a id="__codelineno-14-39" name="__codelineno-14-39" href="#__codelineno-14-39"></a>                &lt;div&gt;
+<a id="__codelineno-14-40" name="__codelineno-14-40" href="#__codelineno-14-40"></a>                    &lt;button type=&quot;submit&quot; class=&quot;btn btn-success&quot;&gt;Guardar&lt;/button&gt;
+<a id="__codelineno-14-41" name="__codelineno-14-41" href="#__codelineno-14-41"></a>                    &lt;a href=&quot;{{ route(&#39;nota.index&#39;) }}&quot; class=&quot;btn btn-danger&quot;&gt;Cancelar&lt;/a&gt;
+<a id="__codelineno-14-42" name="__codelineno-14-42" href="#__codelineno-14-42"></a>                &lt;/div&gt;
+<a id="__codelineno-14-43" name="__codelineno-14-43" href="#__codelineno-14-43"></a>            &lt;/form&gt;
+<a id="__codelineno-14-44" name="__codelineno-14-44" href="#__codelineno-14-44"></a>        &lt;/div&gt;
+<a id="__codelineno-14-45" name="__codelineno-14-45" href="#__codelineno-14-45"></a>    &lt;/div&gt;
+<a id="__codelineno-14-46" name="__codelineno-14-46" href="#__codelineno-14-46"></a>@endsection
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">¿Por qué el <code>&lt;textarea&gt;</code> va todo en una línea?</p>
+<p>A diferencia de <code>&lt;input&gt;</code>, un <code>&lt;textarea&gt;</code> conserva <strong>literalmente</strong> todo lo que escribas entre sus etiquetas, incluyendo saltos de línea y espacios de indentación. Si escribieras <code>{{ old('descripcion') }}</code> en su propia línea con sangría, ese salto de línea y esos espacios formarían parte del valor del campo, y se guardarían en la base de datos cada vez que el usuario envíe el formulario sin tocar la descripción. Por eso <code>{{ old('descripcion') }}</code> va pegado a <code>&lt;textarea ...&gt;</code> y a <code>&lt;/textarea&gt;</code>, sin saltos de línea entre medio.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">¿Qué es CSRF?</p>
+<p>Laravel genera un <strong>token único</strong> por sesión de usuario que se incluye en cada formulario con <code>@csrf</code>. Al enviar el formulario, Laravel verifica que el token coincida con el de la sesión. Si no coinciden, lanza un error <strong>419 (Page Expired)</strong>. Esto previene ataques donde un tercero envíe formularios en nombre del usuario sin su consentimiento.</p>
+</div>
+<p><strong>Ruta para guardar:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="x">Route::post(&#39;/nota/guardar&#39;, [NotaController::class, &#39;guardar&#39;])-&gt;name(&#39;nota.guardar&#39;);</span>
+</code></pre></div>
+<p><strong>Controlador</strong> — dos formas equivalentes (todavía sin validación, la añadiremos más adelante):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="x">// Opción 1: campo a campo</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="x">public function guardar(Request $request)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="x">{</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="x">    $nota = new Nota();</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="x">    $nota-&gt;titulo      = $request-&gt;input(&#39;titulo&#39;);</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="x">    $nota-&gt;descripcion = $request-&gt;input(&#39;descripcion&#39;);</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="x">    $nota-&gt;fecha       = $request-&gt;input(&#39;fecha&#39;);</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="x">    $nota-&gt;realizada   = $request-&gt;boolean(&#39;realizada&#39;);</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="x">    $nota-&gt;save();</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="x">    return redirect()-&gt;route(&#39;nota.index&#39;);</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="x">}</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="x">// Opción 2: con create() (más concisa)</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="x">public function guardar(Request $request)</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="x">{</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="x">    Nota::create($request-&gt;all());</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="x">    return redirect()-&gt;route(&#39;nota.index&#39;);</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="x">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">El checkbox sin marcar</p>
+<p>Si el checkbox <code>realizada</code> no está marcado, el navegador <strong>no envía ese campo</strong> en la petición. <code>$request-&gt;boolean('realizada')</code> devuelve <code>false</code> en ese caso (no falla ni lanza error). En la Opción 2, al no venir <code>realizada</code> en <code>$request-&gt;all()</code>, Eloquent usa el valor <code>default(false)</code> que definimos en la migración. Ambas opciones funcionan correctamente para los dos casos (marcado / sin marcar).</p>
+</div>
+<hr />
+<h3 id="u-editar-y-actualizar-una-nota">U — Editar y actualizar una nota</h3>
+<p><strong>Ruta para mostrar el formulario:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="x">Route::get(&#39;/nota/editar/{nota}&#39;, [NotaController::class, &#39;editar&#39;])-&gt;name(&#39;nota.editar&#39;);</span>
+</code></pre></div>
+<p><strong>Controlador</strong> — dos formas:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="x">// Opción 1: buscar por ID manualmente</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="x">public function editar($id)</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="x">{</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="x">    $nota = Nota::findOrFail($id);</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="x">    return view(&#39;notas.editar&#39;, compact(&#39;nota&#39;));</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="x">}</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="x">// Opción 2: inyección de modelo (recomendada)</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="x">public function editar(Nota $nota)</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="x">{</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="x">    return view(&#39;notas.editar&#39;, compact(&#39;nota&#39;));</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="x">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Inyección de modelo</p>
+<p>Cuando declaramos <code>Nota $nota</code> como parámetro, Laravel busca automáticamente el registro por su ID y lo inyecta en el método. Es la forma recomendada al trabajar con modelos.</p>
+</div>
+<p><strong>Vista</strong> <code>resources/views/notas/editar.blade.php</code>:</p>
+<div class="highlight"><span class="filename">notas/editar.blade.php</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>@extends(&#39;layouts.notas&#39;)
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>@section(&#39;title&#39;, &#39;Editar Nota&#39;)
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>@section(&#39;content&#39;)
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    &lt;h2&gt;Editar Nota&lt;/h2&gt;
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    &lt;div class=&quot;row&quot;&gt;
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>        &lt;div class=&quot;col-md-6&quot;&gt;
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>            &lt;form action=&quot;{{ route(&#39;nota.actualizar&#39;, $nota-&gt;id) }}&quot; method=&quot;POST&quot;&gt;
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>                @csrf
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>                @method(&#39;PUT&#39;)
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>                &lt;div&gt;
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>                    &lt;label&gt;Título:&lt;/label&gt;
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>                    &lt;input type=&quot;text&quot; name=&quot;titulo&quot;
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>                           class=&quot;form-control @error(&#39;titulo&#39;) is-invalid @enderror&quot;
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>                           value=&quot;{{ $nota-&gt;titulo }}&quot;&gt;
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>                    @error(&#39;titulo&#39;)
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>                        &lt;div class=&quot;text-danger&quot;&gt;&lt;p&gt;{{ $message }}&lt;/p&gt;&lt;/div&gt;
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>                    @enderror
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>                &lt;/div&gt;
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>                &lt;div&gt;
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>                    &lt;label&gt;Descripción:&lt;/label&gt;
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>                    &lt;textarea name=&quot;descripcion&quot; class=&quot;form-control @error(&#39;descripcion&#39;) is-invalid @enderror&quot;&gt;{{ $nota-&gt;descripcion }}&lt;/textarea&gt;
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>                    @error(&#39;descripcion&#39;)
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>                        &lt;div class=&quot;text-danger&quot;&gt;&lt;p&gt;{{ $message }}&lt;/p&gt;&lt;/div&gt;
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>                    @enderror
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>                &lt;/div&gt;
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a>                &lt;div&gt;
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a>                    &lt;label&gt;Fecha:&lt;/label&gt;
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a>                    &lt;input type=&quot;date&quot; name=&quot;fecha&quot;
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a>                           class=&quot;form-control @error(&#39;fecha&#39;) is-invalid @enderror&quot;
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a>                           value=&quot;{{ $nota-&gt;fecha }}&quot;&gt;
+<a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a>                    @error(&#39;fecha&#39;)
+<a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a>                        &lt;div class=&quot;text-danger&quot;&gt;&lt;p&gt;{{ $message }}&lt;/p&gt;&lt;/div&gt;
+<a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a>                    @enderror
+<a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a>                &lt;/div&gt;
+<a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a>                &lt;div&gt;
+<a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a>                    &lt;label&gt;Completada:&lt;/label&gt;
+<a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a>                    &lt;input type=&quot;checkbox&quot; name=&quot;realizada&quot; class=&quot;form-check-input&quot;
+<a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a>                           value=&quot;1&quot; {{ $nota-&gt;realizada ? &#39;checked&#39; : &#39;&#39; }}&gt;
+<a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a>                &lt;/div&gt;
+<a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a>                &lt;div&gt;
+<a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a>                    &lt;button type=&quot;submit&quot; class=&quot;btn btn-success&quot;&gt;Actualizar&lt;/button&gt;
+<a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a>                    &lt;a href=&quot;{{ route(&#39;nota.index&#39;) }}&quot; class=&quot;btn btn-danger&quot;&gt;Cancelar&lt;/a&gt;
+<a id="__codelineno-19-43" name="__codelineno-19-43" href="#__codelineno-19-43"></a>                &lt;/div&gt;
+<a id="__codelineno-19-44" name="__codelineno-19-44" href="#__codelineno-19-44"></a>            &lt;/form&gt;
+<a id="__codelineno-19-45" name="__codelineno-19-45" href="#__codelineno-19-45"></a>        &lt;/div&gt;
+<a id="__codelineno-19-46" name="__codelineno-19-46" href="#__codelineno-19-46"></a>    &lt;/div&gt;
+<a id="__codelineno-19-47" name="__codelineno-19-47" href="#__codelineno-19-47"></a>@endsection
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><code>value=\"{{ $nota-&gt;fecha }}\"</code>: por qué funciona (y cuándo dejaría de hacerlo)</p>
+<p>Como el modelo <code>Nota</code> no tiene <code>$casts</code> para <code>fecha</code>, Eloquent devuelve el valor tal cual lo entrega la base de datos para una columna <code>DATE</code>: una cadena <code>"YYYY-MM-DD"</code>, justo el formato que espera <code>&lt;input type="date"&gt;</code>. Si en el futuro añadís <code>'fecha' =&gt; 'date'</code> a <code>$casts</code> (algo razonable, para poder usar métodos de Carbon como <code>format()</code> o <code>addDays()</code>), <code>$nota-&gt;fecha</code> pasaría a ser un objeto Carbon, y su conversión a texto por defecto incluye la hora (<code>"2026-01-15 00:00:00"</code>), lo que rompería este input. En ese caso habría que cambiar a <code>value="{{ $nota-&gt;fecha-&gt;format('Y-m-d') }}"</code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">@method('PUT')</p>
+<p>Los formularios HTML solo soportan <code>GET</code> y <code>POST</code>. Para simular <code>PUT</code> o <code>DELETE</code>, Laravel proporciona la directiva <code>@method('PUT')</code>, que debe ir dentro del formulario, antes de los inputs.</p>
+</div>
+<p><strong>Ruta para actualizar:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="x">Route::put(&#39;/nota/actualizar/{nota}&#39;, [NotaController::class, &#39;actualizar&#39;])-&gt;name(&#39;nota.actualizar&#39;);</span>
+</code></pre></div>
+<p><strong>Controlador</strong> (todavía sin validación, la añadiremos más adelante):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="x">public function actualizar(Request $request, Nota $nota)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="x">{</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="x">    $datos = $request-&gt;all();</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="x">    $datos[&#39;realizada&#39;] = $request-&gt;boolean(&#39;realizada&#39;);</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="x">    $nota-&gt;update($datos);</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="x">    return redirect()-&gt;route(&#39;nota.index&#39;)-&gt;with(&#39;success&#39;, &#39;La nota se ha actualizado correctamente.&#39;);</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="x">}</span>
+</code></pre></div>
+<hr />
+<h3 id="r-mostrar-una-nota-individual">R — Mostrar una nota individual</h3>
+<p><strong>Ruta:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="x">Route::get(&#39;/nota/mostrar/{nota}&#39;, [NotaController::class, &#39;mostrar&#39;])-&gt;name(&#39;nota.mostrar&#39;);</span>
+</code></pre></div>
+<p><strong>Controlador:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="x">public function mostrar(Nota $nota)</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="x">{</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="x">    return view(&#39;notas.mostrar&#39;, compact(&#39;nota&#39;));</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="x">}</span>
+</code></pre></div>
+<p><strong>Vista</strong> <code>resources/views/notas/mostrar.blade.php</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>@extends(&#39;layouts.notas&#39;)
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>@section(&#39;title&#39;, &#39;Detalle de Nota&#39;)
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>@section(&#39;content&#39;)
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    &lt;h2&gt;{{ $nota-&gt;titulo }}&lt;/h2&gt;
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    &lt;p&gt;{{ $nota-&gt;descripcion }}&lt;/p&gt;
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    &lt;p&gt;Fecha: {{ $nota-&gt;fecha }}&lt;/p&gt;
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    &lt;p&gt;Estado: {{ $nota-&gt;realizada ? &#39;Completada&#39; : &#39;Pendiente&#39; }}&lt;/p&gt;
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>    &lt;a href=&quot;{{ route(&#39;nota.index&#39;) }}&quot;&gt;Volver&lt;/a&gt;
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>@endsection
+</code></pre></div>
+<hr />
+<h3 id="d-eliminar-una-nota">D — Eliminar una nota</h3>
+<p><strong>Ruta:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="x">Route::delete(&#39;/nota/eliminar/{nota}&#39;, [NotaController::class, &#39;eliminar&#39;])-&gt;name(&#39;nota.eliminar&#39;);</span>
+</code></pre></div>
+<p><strong>Controlador:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="x">public function eliminar(Nota $nota)</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="x">{</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="x">    $nota-&gt;delete();</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="x">    return redirect()-&gt;route(&#39;nota.index&#39;)-&gt;with(&#39;success&#39;, &#39;La nota se ha eliminado correctamente.&#39;);</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="x">}</span>
+</code></pre></div>
+<p>El método <code>delete()</code> elimina el registro de la base de datos.</p>
+<hr />
+<h2 id="validacion-de-datos">Validación de datos</h2>
+<h3 id="por-que-validar">¿Por qué validar?</h3>
+<div class="admonition danger">
+<p class="admonition-title">Importante</p>
+<p>Siempre debemos validar los datos <strong>antes de almacenarlos</strong> y <strong>antes de actualizarlos</strong>. Nunca debemos asumir que lo que llega del formulario es seguro o correcto.</p>
+</div>
+<h3 id="clase-formrequest-personalizada">Clase FormRequest personalizada</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>make:request<span class="w"> </span>NotaRequest
+</code></pre></div>
+<p>Esto crea <code>app/Http/Requests/NotaRequest.php</code>.</p>
+<h4 id="metodo-authorize">Método <code>authorize()</code></h4>
+<p>Define si el usuario tiene permiso para hacer la petición. Lo dejamos en <code>true</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="x">public function authorize(): bool</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="x">{</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="x">    return true;</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="x">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p>Si este método devuelve <code>false</code>, la validación no se ejecutará y se lanzará un error <strong>403 (Forbidden)</strong>.</p>
+</div>
+<h4 id="metodo-rules">Método <code>rules()</code></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="x">public function rules(): array</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="x">{</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="x">    return [</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="x">        &#39;titulo&#39;      =&gt; &#39;required|string|max:255&#39;,</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="x">        &#39;descripcion&#39; =&gt; &#39;required|string|min:10&#39;,</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="x">        &#39;fecha&#39;       =&gt; &#39;required|date&#39;,</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="x">        &#39;realizada&#39;   =&gt; &#39;nullable|boolean&#39;,</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="x">    ];</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="x">}</span>
+</code></pre></div>
+<h4 id="metodo-messages-mensajes-personalizados">Método <code>messages()</code> — mensajes personalizados</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="x">public function messages(): array</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="x">{</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="x">    return [</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="x">        &#39;titulo.required&#39;      =&gt; &#39;El título es obligatorio.&#39;,</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="x">        &#39;titulo.max&#39;           =&gt; &#39;El título no puede tener más de 255 caracteres.&#39;,</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="x">        &#39;descripcion.required&#39; =&gt; &#39;La descripción es obligatoria.&#39;,</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="x">        &#39;descripcion.min&#39;      =&gt; &#39;La descripción debe tener al menos 10 caracteres.&#39;,</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="x">        &#39;fecha.required&#39;       =&gt; &#39;La fecha es obligatoria.&#39;,</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="x">        &#39;fecha.date&#39;           =&gt; &#39;La fecha no tiene un formato válido.&#39;,</span>
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="x">    ];</span>
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="x">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">¿Y las reglas que no aparecen aquí?</p>
+<p>No es necesario añadir un mensaje para cada combinación <code>campo.regla</code>. Para las que no personalices (por ejemplo, <code>realizada.boolean</code>), Laravel mostrará su mensaje por defecto, en inglés salvo que instales el paquete de traducción al español para los archivos de validación.</p>
+</div>
+<h3 id="uso-en-el-controlador">Uso en el controlador</h3>
+<p>Ahora que existe <code>NotaRequest</code>, actualizamos <strong>los dos métodos que reciben datos de formularios</strong> (<code>guardar()</code> y <code>actualizar()</code>) para usarla. En lugar de <code>Request $request</code>, usamos <code>NotaRequest $request</code>: Laravel valida automáticamente antes de ejecutar el método, y si la validación falla, redirige de vuelta al formulario con los errores (los <code>@error</code> y <code>old()</code> que ya tenemos en las vistas se encargan del resto).</p>
+<p>Usamos <code>$request-&gt;validated()</code> en lugar de <code>$request-&gt;all()</code>: devuelve únicamente los campos que han pasado las reglas de <code>rules()</code>, sin depender de que <code>$fillable</code> "filtre" el resto.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="x">use App\Http\Requests\NotaRequest;</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="x">public function guardar(NotaRequest $request)</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="x">{</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="x">    $datos = $request-&gt;validated();</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="x">    $datos[&#39;realizada&#39;] = $request-&gt;boolean(&#39;realizada&#39;);</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="x">    Nota::create($datos);</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="x">    return redirect()-&gt;route(&#39;nota.index&#39;)-&gt;with(&#39;success&#39;, &#39;La nota se ha creado correctamente.&#39;);</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="x">}</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="x">public function actualizar(NotaRequest $request, Nota $nota)</span>
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="x">{</span>
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="x">    $datos = $request-&gt;validated();</span>
+<a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="x">    $datos[&#39;realizada&#39;] = $request-&gt;boolean(&#39;realizada&#39;);</span>
+<a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="x">    $nota-&gt;update($datos);</span>
+<a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a><span class="x">    return redirect()-&gt;route(&#39;nota.index&#39;)-&gt;with(&#39;success&#39;, &#39;La nota se ha actualizado correctamente.&#39;);</span>
+<a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a><span class="x">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">¿Por qué seguimos tratando <code>realizada</code> aparte?</p>
+<p>La regla <code>'realizada' =&gt; 'nullable|boolean'</code> permite que el campo no venga en la petición (checkbox sin marcar), pero entonces <code>validated()</code> tampoco lo incluye. Por eso lo añadimos explícitamente con <code>$request-&gt;boolean('realizada')</code>, que siempre devuelve <code>true</code> o <code>false</code> independientemente de si el campo llegó o no. Es el mismo método para crear y para actualizar — ya no necesitamos las otras variantes (<code>input('realizada') ? 1 : 0</code>, <code>has('realizada')</code>...) que vimos antes de tener validación.</p>
+</div>
+<hr />
+<h2 id="mensajes-de-exito-y-errores">Mensajes de éxito y errores</h2>
+<h3 id="mostrar-mensajes-de-exito">Mostrar mensajes de éxito</h3>
+<p>En <code>index.blade.php</code>, añadimos antes del listado:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>@if (session(&#39;success&#39;))
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    &lt;div class=&quot;alert alert-success&quot;&gt;
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>        &lt;p&gt;{{ session(&#39;success&#39;) }}&lt;/p&gt;
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    &lt;/div&gt;
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>@endif
+</code></pre></div>
+<h3 id="mostrar-errores-de-validacion">Mostrar errores de validación</h3>
+<p>Para resaltar el campo con error y mostrar el mensaje:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>&lt;input name=&quot;titulo&quot;
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>       class=&quot;form-control @error(&#39;titulo&#39;) is-invalid @enderror&quot;
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>       value=&quot;{{ old(&#39;titulo&#39;) }}&quot;&gt;
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>@error(&#39;titulo&#39;)
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>    &lt;div class=&quot;text-danger&quot;&gt;
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>        &lt;p&gt;{{ $message }}&lt;/p&gt;
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>    &lt;/div&gt;
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>@enderror
+</code></pre></div>
+<h3 id="recordar-valores-enviados-con-old">Recordar valores enviados con <code>old()</code></h3>
+<p>Al volver al formulario tras un error, los campos pierden su valor. Para recuperarlos usamos <code>old()</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>{{-- Input de texto --}}
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>&lt;input name=&quot;titulo&quot; value=&quot;{{ old(&#39;titulo&#39;) }}&quot;&gt;
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>{{-- Textarea (sin saltos de línea entre las etiquetas, como vimos antes) --}}
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>&lt;textarea name=&quot;descripcion&quot;&gt;{{ old(&#39;descripcion&#39;) }}&lt;/textarea&gt;
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Quitar <code>required</code> del HTML</p>
+<p>Para que Laravel pueda ejecutar la validación en <code>NotaRequest</code>, es necesario <strong>quitar los atributos <code>required</code></strong> del HTML del formulario. Si los dejamos, el navegador impide el envío y Laravel nunca recibe los datos para validar.</p>
+</div>
+<hr />
+<h2 id="confirmacion-de-eliminacion-con-modal-bootstrap">Confirmación de eliminación con modal Bootstrap</h2>
+<h3 id="modal-en-indexbladephp">Modal en <code>index.blade.php</code></h3>
+<p>Añadimos al final de la vista:</p>
+<div class="highlight"><span class="filename">index.blade.php</span><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>&lt;!-- Modal Confirmación Eliminar --&gt;
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>&lt;div class=&quot;modal fade&quot; id=&quot;modalEliminar&quot; tabindex=&quot;-1&quot;
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>     aria-labelledby=&quot;modalEliminarLabel&quot; aria-hidden=&quot;true&quot;&gt;
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>    &lt;div class=&quot;modal-dialog&quot;&gt;
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>        &lt;div class=&quot;modal-content&quot;&gt;
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>            &lt;div class=&quot;modal-header bg-danger text-white&quot;&gt;
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>                &lt;h5 class=&quot;modal-title&quot;&gt;Confirmar eliminación&lt;/h5&gt;
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot;&gt;&lt;/button&gt;
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>            &lt;/div&gt;
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>            &lt;div class=&quot;modal-body&quot;&gt;
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>                ¿Estás seguro que deseas eliminar la nota
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>                &lt;strong id=&quot;tituloNota&quot;&gt;&lt;/strong&gt;?
+<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>            &lt;/div&gt;
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>            &lt;div class=&quot;modal-footer&quot;&gt;
+<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>                &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-bs-dismiss=&quot;modal&quot;&gt;
+<a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a>                    Cancelar
+<a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>                &lt;/button&gt;
+<a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a>                &lt;form id=&quot;formEliminar&quot; method=&quot;POST&quot;&gt;
+<a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a>                    @csrf
+<a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a>                    @method(&#39;DELETE&#39;)
+<a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a>                    &lt;button type=&quot;submit&quot; class=&quot;btn btn-danger&quot;&gt;Sí, eliminar&lt;/button&gt;
+<a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a>                &lt;/form&gt;
+<a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a>            &lt;/div&gt;
+<a id="__codelineno-35-24" name="__codelineno-35-24" href="#__codelineno-35-24"></a>        &lt;/div&gt;
+<a id="__codelineno-35-25" name="__codelineno-35-25" href="#__codelineno-35-25"></a>    &lt;/div&gt;
+<a id="__codelineno-35-26" name="__codelineno-35-26" href="#__codelineno-35-26"></a>&lt;/div&gt;
+<a id="__codelineno-35-27" name="__codelineno-35-27" href="#__codelineno-35-27"></a>
+<a id="__codelineno-35-28" name="__codelineno-35-28" href="#__codelineno-35-28"></a>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+<a id="__codelineno-35-29" name="__codelineno-35-29" href="#__codelineno-35-29"></a>&lt;script&gt;
+<a id="__codelineno-35-30" name="__codelineno-35-30" href="#__codelineno-35-30"></a>    document.addEventListener(&#39;DOMContentLoaded&#39;, function () {
+<a id="__codelineno-35-31" name="__codelineno-35-31" href="#__codelineno-35-31"></a>        var modalEliminar = document.getElementById(&#39;modalEliminar&#39;);
+<a id="__codelineno-35-32" name="__codelineno-35-32" href="#__codelineno-35-32"></a>        modalEliminar.addEventListener(&#39;show.bs.modal&#39;, function (event) {
+<a id="__codelineno-35-33" name="__codelineno-35-33" href="#__codelineno-35-33"></a>            var button    = event.relatedTarget;
+<a id="__codelineno-35-34" name="__codelineno-35-34" href="#__codelineno-35-34"></a>            var notaId    = button.getAttribute(&#39;data-id&#39;);
+<a id="__codelineno-35-35" name="__codelineno-35-35" href="#__codelineno-35-35"></a>            var titulo    = button.getAttribute(&#39;data-titulo&#39;);
+<a id="__codelineno-35-36" name="__codelineno-35-36" href="#__codelineno-35-36"></a>            document.getElementById(&#39;tituloNota&#39;).textContent = titulo;
+<a id="__codelineno-35-37" name="__codelineno-35-37" href="#__codelineno-35-37"></a>            document.getElementById(&#39;formEliminar&#39;).action = &#39;/nota/eliminar/&#39; + notaId;
+<a id="__codelineno-35-38" name="__codelineno-35-38" href="#__codelineno-35-38"></a>        });
+<a id="__codelineno-35-39" name="__codelineno-35-39" href="#__codelineno-35-39"></a>    });
+<a id="__codelineno-35-40" name="__codelineno-35-40" href="#__codelineno-35-40"></a>&lt;/script&gt;
+</code></pre></div>
+<hr />
+<h2 id="adelanto-relaciones-entre-modelos">Adelanto: relaciones entre modelos</h2>
+<div class="admonition info">
+<p class="admonition-title">Esto lo veremos en detalle en UD5.6</p>
+<p>Las dos secciones siguientes no se aplican al proyecto de <code>notas</code> que acabamos de construir — son un adelanto de las <strong>relaciones entre modelos</strong>, que veremos en profundidad en el próximo tema. Los ejemplos usan <code>categories</code> y la relación <code>product</code>-<code>user</code> que ya conocéis de UD5.4 (el modelo <code>Product</code>), para que cuando lleguéis a UD5.6 estas piezas ya os resulten familiares.</p>
+</div>
+<h3 id="claves-ajenas">Claves ajenas</h3>
+<p>Las claves ajenas se definen usando <code>foreignId()</code> o <code>foreign()</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="x">// Método 1: foreignId (recomendado)</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="x">$table-&gt;foreignId(&#39;category_id&#39;)</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="x">      -&gt;constrained()          // referencia a tabla categories</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="x">      -&gt;onDelete(&#39;cascade&#39;);   // eliminar en cascada</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="x">// Método 2: foreign (más control)</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="x">$table-&gt;unsignedBigInteger(&#39;category_id&#39;);</span>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="x">$table-&gt;foreign(&#39;category_id&#39;)</span>
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="x">      -&gt;references(&#39;id&#39;)</span>
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="x">      -&gt;on(&#39;categories&#39;)</span>
+<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a><span class="x">      -&gt;onDelete(&#39;cascade&#39;);</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Convención de nombres</p>
+<p>Laravel busca automáticamente la tabla relacionada asumiendo que el nombre de la columna foránea sigue la convención <code>{tabla_singular}_id</code>. Por ejemplo, <code>category_id</code> referencia a <code>categories</code>. Si tu columna no sigue esta convención, usa el método 2 con <code>references()</code> y <code>on()</code>.</p>
+</div>
+<h3 id="tabla-puente-para-relaciones-muchos-a-muchos">Tabla puente para relaciones Muchos a Muchos</h3>
+<p>Las relaciones muchos a muchos requieren una <strong>tabla pivote</strong> intermedia con las claves foráneas de ambas tablas:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="x">Schema::create(&#39;product_user&#39;, function (Blueprint $table) {</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="x">    $table-&gt;id();</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="x">    $table-&gt;foreignId(&#39;product_id&#39;)-&gt;constrained()-&gt;onDelete(&#39;cascade&#39;);</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="x">    $table-&gt;foreignId(&#39;user_id&#39;)-&gt;constrained()-&gt;onDelete(&#39;cascade&#39;);</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="x">    $table-&gt;timestamps();</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="x">    // Evitar duplicados</span>
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="x">    $table-&gt;unique([&#39;product_id&#39;, &#39;user_id&#39;]);</span>
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="x">});</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Nombre de la tabla pivote</p>
+<p>La tabla pivote debe combinar los dos nombres en <strong>orden alfabético</strong> separados por <code>_</code>. En este caso <code>product_user</code> es correcto porque "product" va antes que "user" alfabéticamente. Esto permite que Laravel reconozca la tabla automáticamente al definir las relaciones en los modelos.</p>
+</div>
+<hr />
+<h2 id="resumen-de-rutas-del-crud">Resumen de rutas del CRUD</h2>
+<table>
+<thead>
+<tr>
+<th>Método HTTP</th>
+<th>URL</th>
+<th>Nombre</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/</code></td>
+<td><code>nota.index</code></td>
+<td>Listar todas las notas</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/nota/crear</code></td>
+<td><code>nota.crear</code></td>
+<td>Mostrar formulario de creación</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/nota/guardar</code></td>
+<td><code>nota.guardar</code></td>
+<td>Guardar nueva nota</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/nota/mostrar/{nota}</code></td>
+<td><code>nota.mostrar</code></td>
+<td>Ver detalle de una nota</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/nota/editar/{nota}</code></td>
+<td><code>nota.editar</code></td>
+<td>Mostrar formulario de edición</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/nota/actualizar/{nota}</code></td>
+<td><code>nota.actualizar</code></td>
+<td>Actualizar nota existente</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/nota/eliminar/{nota}</code></td>
+<td><code>nota.eliminar</code></td>
+<td>Eliminar nota</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.tabs", "toc.integrate", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
