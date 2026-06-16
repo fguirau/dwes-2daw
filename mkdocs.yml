@@ -1,0 +1,63 @@
+site_name: DWES - 2º DAW
+site_author: Francisco J. Guirau López
+site_description: Desarrollo Web en Entorno Servidor - 2º DAW - IES Torrevigía
+
+theme:
+  name: material
+  language: es
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.tabs
+    - toc.integrate
+    - content.code.copy
+    - content.code.annotate
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - tables
+  - attr_list
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Inicio: index.md
+  - UD1 - Intro:
+      - 1.1 Arquitectura y entorno de trabajo: ud1/01_introduccion_arquitectura.md
+  - UD2 - El Lenguaje PHP:
+    - 2.1 Sintaxis básica, variables y operadores: ud2/01_lenguaje_php.md
+    - 2.2 Estructuras de control: ud2/02_estructuras_control.md
+    - 2.3 Arrays, matrices y cadenas: ud2/03_arrays_matrices_cadenas.md
+    - 2.4 Funciones y recursividad: ud2/04_funciones_recursividad.md
+  - UD3 - Programación Web:
+    - 3.1 Programación Web: ud3/01_programacion_web.md
+    - 3.2 Funciones para procesar Formularios: ud3/02_funciones_formularios.md
+  - UD4 - BD:
+    - 4.1 Acceso a BD con PDO. Operaciones CRUD: ud4/01_acceso_bd_pdo.md
+    - 4.2 Enviar Email con phpMailer: ud4/02_enviar_email_phpmailer.md
+    - 4.3 Inserción y Recuperación de Contraseñas en ls BD: ud4/03_contrasenas_bd.md
+  - UD5 - Framework Laravel:
+    - 5.1 Rutas, Vistas, Layouts, Partials y Componentes: ud5/01_vistas_rutas_layouts.md
+    - 5.2 Migraciones y Modelos: ud5/02_migraciones_modelos.md
+    - 5.3 Controladores: ud5/03_controladores.md
+    - 5.4 Factory, Seeders y Faker: ud5/04_factory_seeder_faker.md
+    - 5.5 Operaciones CRUD: ud5/05_crud.md
