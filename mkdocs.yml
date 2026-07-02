@@ -41,7 +41,7 @@ extra_css:
 
 nav:
   - Inicio: index.md
-  - UD1 - Intro:
+  - UD1 - Intros:
       - 1.1 Arquitectura y entorno de trabajo: ud1/01_introduccion_arquitectura.md
   - UD2 - El Lenguaje PHP:
     - 2.1 Sintaxis básica, variables y operadores: ud2/01_lenguaje_php.md
