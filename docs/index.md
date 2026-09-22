@@ -11,6 +11,7 @@ Bienvenido a los apuntes de **DWES** de 2º DAW del **IES Torrevigía**.
 | [UD3 - Programación Web](ud3/01_programacion_web.md) | Formularios, Cookies, Variables de Sesión |
 | [UD4 - Acceso a BD con PDO. Operaciones CRUD](ud4/01_acceso_bd_pdo.md) | Acceso a BD, Operaciones de Inserción, Eliminación, Actualización y Lectura |
 | [UD5 - Framework Laravel](ud5/01_vistas_rutas_layouts.md) | Laravel, Vistas, Rutas, Partials, Componentes, Migraciones, Controladores |
+| [UD6 - Servicios REST](ud6/00_modelo_genero.md) | API REST GameShop |
 
 ---
 
