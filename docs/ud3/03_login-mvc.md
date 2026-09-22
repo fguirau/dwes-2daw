@@ -2,7 +2,7 @@
 
 Este apartado reúne en un único ejemplo práctico todo lo visto en la unidad
 (formularios POST, validación en servidor, `htmlspecialchars()`, tokens CSRF y sesiones)
-y lo organiza con un patrón profesional: **Modelo-Vista-Controlador (MVC)**.
+y lo organiza con un patrón profesional conocido: **Modelo-Vista-Controlador (MVC)**.
 
 ## ¿Qué es el patrón MVC y por qué usarlo?
 
