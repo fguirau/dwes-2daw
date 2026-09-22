@@ -62,3 +62,9 @@ nav:
     - 5.3 Controladores: ud5/03_controladores.md
     - 5.4 Factory, Seeders y Faker: ud5/04_factory_seeder_faker.md
     - 5.5 Operaciones CRUD: ud5/05_crud.md
+  - UD6 - Servicios REST:
+    - 6.0 Modelo Género: ud6/00_modelo_genero.md
+    - 6.1 Fundamnentos REST: ud6/01_fundamentos_rest.md
+    - 6.2 Controladores y Resources: ud6/02_controladores_resources.md
+    - 6.3 Autenticación Sanctum: ud6/03_sanctum_auth.md
+    - 6.4 Proyecto GameShop API: ud6/04_proyecto_gameshop_api.md
