@@ -1,0 +1,167 @@
+/* ============================================================
+   extra.css — Tema Teal para MkDocs Material
+   Apuntes DWES · IES 1 Libertas
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. PALETA TEAL — variables globales del tema
+   ------------------------------------------------------------ */
+:root {
+  --md-primary-fg-color:        #00796B; /* teal-700 */
+  --md-primary-fg-color--light: #B2DFDB; /* teal-100 */
+  --md-primary-fg-color--dark:  #004D40; /* teal-900 */
+  --md-accent-fg-color:         #1DE9B6; /* teal accent-400 */
+}
+
+/* ------------------------------------------------------------
+   2. ENCABEZADOS — escala de verdes teal
+   ------------------------------------------------------------ */
+
+/* H1 — verde teal oscuro, borde inferior */
+.md-typeset h1 {
+  color: #004D40;           /* teal-900 */
+  border-bottom: 3px solid #009688;
+  padding-bottom: 0.25em;
+}
+
+/* H2 — teal estándar, borde izquierdo como acento */
+.md-typeset h2 {
+  color: #00695C;           /* teal-800 */
+  border-left: 4px solid #26A69A;
+  padding-left: 0.6em;
+  margin-top: 1.6em;
+}
+
+/* H3 — teal medio */
+.md-typeset h3 {
+  color: #00796B;           /* teal-700 */
+}
+
+/* H4 — teal suave, en cursiva para diferenciarlo */
+.md-typeset h4 {
+  color: #00897B;           /* teal-600 */
+  font-style: italic;
+}
+
+/* H5 / H6 — tono más neutro */
+.md-typeset h5,
+.md-typeset h6 {
+  color: #4DB6AC;           /* teal-300 */
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.8em;
+}
+
+/* ------------------------------------------------------------
+   3. ENLACES
+   ------------------------------------------------------------ */
+.md-typeset a {
+  color: #00796B;
+}
+.md-typeset a:hover {
+  color: #004D40;
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------------
+   4. CÓDIGO INLINE
+   ------------------------------------------------------------ */
+.md-typeset code {
+  background-color: #E0F2F1; /* teal-50 */
+  color: #004D40;
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+}
+
+/* ------------------------------------------------------------
+   5. BLOQUES DE CÓDIGO — borde izquierdo teal
+   ------------------------------------------------------------ */
+.md-typeset pre {
+  border-left: 4px solid #26A69A; /* teal-400 */
+  border-radius: 0 4px 4px 0;
+  /*border-left: none;
+  border-radius: 6px;   /* opcional: redondear todos los lados si ya no hay borde */
+
+}
+
+/* ------------------------------------------------------------
+   6. TABLAS
+   ------------------------------------------------------------ */
+.md-typeset table:not([class]) th {
+  background-color: #009688; /* teal-500 */
+  color: #ffffff;
+}
+.md-typeset table:not([class]) tr:nth-child(even) {
+  background-color: #E0F2F1; /* teal-50 */
+}
+.md-typeset table:not([class]) tr:hover {
+  background-color: #B2DFDB; /* teal-100 */
+}
+
+/* ------------------------------------------------------------
+   7. ADMONITIONS — colorear el tipo "note" con teal
+   ------------------------------------------------------------ */
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  border-color: #009688;
+}
+.md-typeset .admonition.note > .admonition-title,
+.md-typeset details.note > summary {
+  background-color: #E0F2F1;
+  color: #004D40;
+}
+.md-typeset .admonition.note > .admonition-title::before,
+.md-typeset details.note > summary::before {
+  background-color: #009688;
+}
+
+/* ------------------------------------------------------------
+   8. CENTRADO DE IMÁGENES con { .center }
+   Requiere attr_list en markdown_extensions del mkdocs.yml
+   ------------------------------------------------------------ */
+.md-typeset img.center {
+  display: block;
+  margin: 1em auto;
+}
+
+/* Alternativa: centra cualquier párrafo que solo contenga imagen */
+.md-typeset p:has(> img:only-child) {
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   9. BARRA DE NAVEGACIÓN LATERAL — resaltar ítem activo
+   ------------------------------------------------------------ */
+.md-nav__item--active > .md-nav__link {
+  color: #00695C;
+  font-weight: bold;
+}
+
+/* ------------------------------------------------------------
+   10. FOOTER
+   ------------------------------------------------------------ */
+.md-footer {
+  background-color: #004D40;
+}
+.md-typeset .admonition.question, .md-typeset details.question {
+    border-color: #64dd17;
+}
+.md-typeset .admonition, .md-typeset details {
+    margin: 1.2em 0;
+    border-radius: 10px;
+    box-shadow: none;
+    border-width: 0 0 0 4px;
+}
+.md-typeset .admonition-title, .md-typeset summary {
+    font-weight: 600;
+}
+img.center {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Fondo del área de números de línea */
+.md-typeset .highlight .linenodiv pre {
+  background-color: transparent;
+  border-left: none;
+}
