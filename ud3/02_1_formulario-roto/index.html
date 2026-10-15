@@ -1,0 +1,2276 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Desarrollo Web en Entorno Servidor - 2º DAW - IES Torrevigía">
+      
+      
+        <meta name="author" content="Francisco J. Guirau López">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>📬 Reto: El formulario roto - DWES - 2º DAW</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reto-el-formulario-roto" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="DWES - 2º DAW" class="md-header__button md-logo" aria-label="DWES - 2º DAW" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES - 2º DAW
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              📬 Reto: El formulario roto
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ud1/01_introduccion_arquitectura/" class="md-tabs__link">
+          
+  
+  
+  UD1 - Intros
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ud2/01_lenguaje_php/" class="md-tabs__link">
+          
+  
+  
+  UD2 - El Lenguaje PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01_programacion_web/" class="md-tabs__link">
+          
+  
+  
+  UD3 - Programación Web
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ud4/01_acceso_bd_pdo/" class="md-tabs__link">
+          
+  
+  
+  UD4 - BD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ud5/01_vistas_rutas_layouts/" class="md-tabs__link">
+          
+  
+  
+  UD5 - Framework Laravel
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ud6/00_modelo_genero/" class="md-tabs__link">
+          
+  
+  
+  UD6 - Servicios REST
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES - 2º DAW" class="md-nav__button md-logo" aria-label="DWES - 2º DAW" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES - 2º DAW
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1 - Intros
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD1 - Intros
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud1/01_introduccion_arquitectura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 Arquitectura y entorno de trabajo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2 - El Lenguaje PHP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD2 - El Lenguaje PHP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud2/01_lenguaje_php/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 Sintaxis básica, variables y operadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud2/02_estructuras_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Estructuras de control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud2/03_arrays_matrices_cadenas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Arrays, matrices y cadenas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud2/04_funciones_recursividad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Funciones y recursividad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3 - Programación Web
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD3 - Programación Web
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_programacion_web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Programación Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_funciones_formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Funciones para procesar Formularios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_login-mvc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Ejemplo de Login con patrón MVC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4 - BD
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD4 - BD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud4/01_acceso_bd_pdo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Acceso a BD con PDO. Operaciones CRUD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud4/02_enviar_email_phpmailer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Enviar Email con phpMailer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud4/03_contrasenas_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Inserción y Recuperación de Contraseñas en ls BD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD5 - Framework Laravel
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD5 - Framework Laravel
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud5/01_vistas_rutas_layouts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Rutas, Vistas, Layouts, Partials y Componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud5/02_migraciones_modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 Migraciones y Modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud5/03_controladores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 Controladores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud5/04_factory_seeder_faker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 Factory, Seeders y Faker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud5/05_crud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 Operaciones CRUD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD6 - Servicios REST
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD6 - Servicios REST
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud6/00_modelo_genero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 Modelo Género
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud6/01_fundamentos_rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 Fundamnentos REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud6/02_controladores_resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 Controladores y Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud6/03_sanctum_auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Autenticación Sanctum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ud6/04_proyecto_gameshop_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 Proyecto GameShop API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="reto-el-formulario-roto">📬 Reto: El formulario roto</h1>
+<div class="admonition abstract">
+<p class="admonition-title">UD3 · Semana 9 · Formularios y <code>$_POST</code></p>
+<p>El equipo de GameShop ha subido a producción <strong>5 formularios</strong> escritos con prisas un viernes a las 14:55.
+Ninguno funciona como debería. Tu misión: <strong>encontrar todos los errores antes que el resto de equipos</strong> y ganar el máximo de XP.</p>
+</div>
+<h2 id="objetivos">🎯 Objetivos</h2>
+<ul>
+<li>Distinguir cuándo usar <code>GET</code> y cuándo <code>POST</code>, y qué superglobal recoge cada uno.</li>
+<li>Relacionar el atributo <code>name</code> del HTML con la clave que lee PHP.</li>
+<li>Detectar errores de lógica típicos al procesar y validar formularios.</li>
+<li>Entender que <strong>todo lo que llega del navegador es un <code>string</code></strong> y que <strong>nunca hay que fiarse del cliente</strong>.</li>
+</ul>
+<h2 id="reglas-del-juego">🕹️ Reglas del juego</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Formato</strong></td>
+<td>Por parejas</td>
+</tr>
+<tr>
+<td><strong>Tiempo</strong></td>
+<td>35 minutos de caza + 15 minutos de puesta en común</td>
+</tr>
+<tr>
+<td><strong>Material</strong></td>
+<td>Carpeta <code>formularios/</code> (descárgala del aula virtual) y esta página</td>
+</tr>
+<tr>
+<td><strong>Pista</strong></td>
+<td>Cada formulario tiene <strong>al menos 5 errores</strong>. Alguno tiene más…</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Copia la carpeta <code>formularios/</code> dentro de <code>htdocs</code> de XAMPP (por ejemplo, <code>htdocs/formulario-roto/</code>).</li>
+<li>Abre cada formulario en el navegador (<code>http://localhost/formulario-roto/1_contacto.php</code>) y <strong>pruébalo</strong>: rellénalo bien, rellénalo mal, déjalo vacío…</li>
+<li>Lee el código. Los números de línea de esta página coinciden con los de los archivos.</li>
+<li>Apunta cada error en la <strong>hoja de registro</strong> (al final de la página).</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Cómo cazar errores como un profesional</p>
+<ul>
+<li>Activa los errores en pantalla: comprueba que en <code>php.ini</code> tienes <code>display_errors = On</code> y <code>error_reporting = E_ALL</code>.</li>
+<li>Abre las <strong>DevTools → pestaña Red (Network)</strong> y fíjate en qué método se usa y qué datos viajan en cada envío.</li>
+<li>Mira la <strong>barra de direcciones</strong> después de enviar: ¿aparecen los datos en la URL?</li>
+<li>Usa <code>var_dump($_POST);</code> o <code>var_dump($_GET);</code> al principio del archivo para ver qué llega <em>de verdad</em> al servidor.</li>
+<li>Un formulario puede "parecer" que funciona y aun así tener errores: prueba <strong>casos límite</strong> (vacío, 0, negativos, textos raros, exactamente 18 años…).</li>
+</ul>
+</div>
+<h2 id="sistema-de-puntos-xp">🏆 Sistema de puntos (XP)</h2>
+<table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>XP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Error localizado (línea) <strong>y</strong> explicado (por qué falla)</td>
+<td><strong>+10</strong></td>
+</tr>
+<tr>
+<td>…y además propones la corrección correcta</td>
+<td><strong>+5</strong></td>
+</tr>
+<tr>
+<td>🛡️ Error <em>bonus</em> de seguridad (hay pocos y están bien escondidos)</td>
+<td><strong>+15</strong></td>
+</tr>
+<tr>
+<td>🔧 <strong>Formulario reparado</strong>: entregas una versión que funciona sin errores</td>
+<td><strong>+20</strong> por formulario</td>
+</tr>
+<tr>
+<td>❌ Falso positivo (apuntas algo que no es un error)</td>
+<td><strong>−5</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado con los falsos positivos</p>
+<p>"No me gusta cómo está escrito" <strong>no es un error</strong>. Un error es algo que hace que el formulario no funcione,
+funcione mal, muestre avisos de PHP o sea inseguro. Si dudas, <strong>pruébalo</strong> antes de apuntarlo.</p>
+</div>
+<hr />
+<h2 id="formulario-1-contacto-con-soporte">Formulario 1 · Contacto con soporte</h2>
+<blockquote>
+<p>Un cliente quiere escribir al equipo de soporte. Dicen que "le dan a Enviar y no pasa nada".</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">1_contacto.php</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#__codelineno-0-39">39</a></span>
+<span class="normal"><a href="#__codelineno-0-40">40</a></span>
+<span class="normal"><a href="#__codelineno-0-41">41</a></span>
+<span class="normal"><a href="#__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span>
+<span class="normal"><a href="#__codelineno-0-45">45</a></span>
+<span class="normal"><a href="#__codelineno-0-46">46</a></span>
+<span class="normal"><a href="#__codelineno-0-47">47</a></span>
+<span class="normal"><a href="#__codelineno-0-48">48</a></span>
+<span class="normal"><a href="#__codelineno-0-49">49</a></span>
+<span class="normal"><a href="#__codelineno-0-50">50</a></span>
+<span class="normal"><a href="#__codelineno-0-51">51</a></span>
+<span class="normal"><a href="#__codelineno-0-52">52</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="c1">// 🎮 GameShop · Formulario roto nº 1 · Contacto con soporte</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nv">$enviado</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="nv">$error</span>   <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="nv">$nombre</span>  <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="nv">$email</span>   <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="nv">$mensaje</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'mensaje'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">''</span> <span class="o">||</span> <span class="nv">$email</span> <span class="o">==</span> <span class="s1">''</span> <span class="o">||</span> <span class="nv">$mensaje</span> <span class="o">==</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>        <span class="nv">$error</span> <span class="o">=</span> <span class="s1">'Todos los campos son obligatorios.'</span><span class="p">;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>        <span class="nv">$enviado</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="p">}</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="p">}</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="cp">?&gt;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="x">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="x">&lt;html lang="es"&gt;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="x">&lt;head&gt;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="x">    &lt;title&gt;GameShop · Contacto&lt;/title&gt;</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="x">    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="x">&lt;/head&gt;</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="x">&lt;body class="container py-5" style="max-width: 600px"&gt;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="x">    &lt;h1 class="mb-4"&gt;📬 Contacta con soporte&lt;/h1&gt;</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$enviado</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="x">        &lt;div class="alert alert-success"&gt;</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="x">            ¡Gracias, </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$nombre</span> <span class="cp">?&gt;</span><span class="x">! Te responderemos lo antes posible.</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$error</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="x">        &lt;div class="alert alert-danger"&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$error</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="x">    &lt;form method="get" action=""&gt;</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="x">            &lt;label for="nombre" class="form-label"&gt;Nombre&lt;/label&gt;</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="x">            &lt;input type="text" id="name" name="nombre" class="form-control"&gt;</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="x">            &lt;label for="email" class="form-label"&gt;Email&lt;/label&gt;</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="x">            &lt;input type="text" id="email" class="form-control"&gt;</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="x">            &lt;label for="mensaje" class="form-label"&gt;Mensaje&lt;/label&gt;</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="x">            &lt;textarea id="mensaje" name="msg" rows="4" class="form-control"&gt;&lt;/textarea&gt;</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="x">        &lt;button type="submit" class="btn btn-primary"&gt;Enviar&lt;/button&gt;</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="x">    &lt;/form&gt;</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="x">&lt;/body&gt;</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="x">&lt;/html&gt;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="formulario-2-registro-de-usuario">Formulario 2 · Registro de usuario</h2>
+<blockquote>
+<p>Nadie consigue registrarse. Ni siquiera el jefe, que tiene 18 años recién cumplidos.</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">2_registro.php</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#__codelineno-1-35">35</a></span>
+<span class="normal"><a href="#__codelineno-1-36">36</a></span>
+<span class="normal"><a href="#__codelineno-1-37">37</a></span>
+<span class="normal"><a href="#__codelineno-1-38">38</a></span>
+<span class="normal"><a href="#__codelineno-1-39">39</a></span>
+<span class="normal"><a href="#__codelineno-1-40">40</a></span>
+<span class="normal"><a href="#__codelineno-1-41">41</a></span>
+<span class="normal"><a href="#__codelineno-1-42">42</a></span>
+<span class="normal"><a href="#__codelineno-1-43">43</a></span>
+<span class="normal"><a href="#__codelineno-1-44">44</a></span>
+<span class="normal"><a href="#__codelineno-1-45">45</a></span>
+<span class="normal"><a href="#__codelineno-1-46">46</a></span>
+<span class="normal"><a href="#__codelineno-1-47">47</a></span>
+<span class="normal"><a href="#__codelineno-1-48">48</a></span>
+<span class="normal"><a href="#__codelineno-1-49">49</a></span>
+<span class="normal"><a href="#__codelineno-1-50">50</a></span>
+<span class="normal"><a href="#__codelineno-1-51">51</a></span>
+<span class="normal"><a href="#__codelineno-1-52">52</a></span>
+<span class="normal"><a href="#__codelineno-1-53">53</a></span>
+<span class="normal"><a href="#__codelineno-1-54">54</a></span>
+<span class="normal"><a href="#__codelineno-1-55">55</a></span>
+<span class="normal"><a href="#__codelineno-1-56">56</a></span>
+<span class="normal"><a href="#__codelineno-1-57">57</a></span>
+<span class="normal"><a href="#__codelineno-1-58">58</a></span>
+<span class="normal"><a href="#__codelineno-1-59">59</a></span>
+<span class="normal"><a href="#__codelineno-1-60">60</a></span>
+<span class="normal"><a href="#__codelineno-1-61">61</a></span>
+<span class="normal"><a href="#__codelineno-1-62">62</a></span>
+<span class="normal"><a href="#__codelineno-1-63">63</a></span>
+<span class="normal"><a href="#__codelineno-1-64">64</a></span>
+<span class="normal"><a href="#__codelineno-1-65">65</a></span>
+<span class="normal"><a href="#__codelineno-1-66">66</a></span>
+<span class="normal"><a href="#__codelineno-1-67">67</a></span>
+<span class="normal"><a href="#__codelineno-1-68">68</a></span>
+<span class="normal"><a href="#__codelineno-1-69">69</a></span>
+<span class="normal"><a href="#__codelineno-1-70">70</a></span>
+<span class="normal"><a href="#__codelineno-1-71">71</a></span>
+<span class="normal"><a href="#__codelineno-1-72">72</a></span>
+<span class="normal"><a href="#__codelineno-1-73">73</a></span>
+<span class="normal"><a href="#__codelineno-1-74">74</a></span>
+<span class="normal"><a href="#__codelineno-1-75">75</a></span>
+<span class="normal"><a href="#__codelineno-1-76">76</a></span>
+<span class="normal"><a href="#__codelineno-1-77">77</a></span>
+<span class="normal"><a href="#__codelineno-1-78">78</a></span>
+<span class="normal"><a href="#__codelineno-1-79">79</a></span>
+<span class="normal"><a href="#__codelineno-1-80">80</a></span>
+<span class="normal"><a href="#__codelineno-1-81">81</a></span>
+<span class="normal"><a href="#__codelineno-1-82">82</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1">// 🎮 GameShop · Formulario roto nº 2 · Registro de usuario</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nv">$errores</span> <span class="o">=</span> <span class="p">[];</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="nv">$ok</span>      <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'enviar'</span><span class="p">]))</span> <span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="nv">$usuario</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="nv">$email</span>   <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_post</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="nv">$pass</span>    <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'password'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>    <span class="nv">$pass2</span>   <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'password2'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>    <span class="nv">$edad</span>    <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'edad'</span><span class="p">]</span> <span class="o">??</span> <span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$usuario</span> <span class="o">===</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>        <span class="nv">$errores</span> <span class="o">=</span> <span class="s1">'El nombre de usuario es obligatorio.'</span><span class="p">;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>    <span class="p">}</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$email</span> <span class="o">===</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>        <span class="nv">$errores</span> <span class="o">=</span> <span class="s1">'El email es obligatorio.'</span><span class="p">;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>    <span class="p">}</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>    <span class="k">if</span> <span class="p">(</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$pass</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>        <span class="nv">$errores</span> <span class="o">=</span> <span class="s1">'La contraseña debe tener al menos 8 caracteres.'</span><span class="p">;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>    <span class="p">}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$pass</span> <span class="o">!==</span> <span class="nv">$pass2</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a>        <span class="nv">$errores</span> <span class="o">=</span> <span class="s1">'Las contraseñas no coinciden.'</span><span class="p">;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a>    <span class="p">}</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$edad</span> <span class="o">&lt;=</span> <span class="mi">18</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a>        <span class="nv">$errores</span> <span class="o">=</span> <span class="s1">'Debes ser mayor de edad para registrarte.'</span><span class="p">;</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a>    <span class="p">}</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a>    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$errores</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a>        <span class="nv">$ok</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a>    <span class="p">}</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="p">}</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="cp">?&gt;</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="x">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="x">&lt;html lang="es"&gt;</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="x">&lt;head&gt;</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="x">    &lt;title&gt;GameShop · Registro&lt;/title&gt;</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="x">    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="x">&lt;/head&gt;</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="x">&lt;body class="container py-5" style="max-width: 600px"&gt;</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="x">    &lt;h1 class="mb-4"&gt;🕹️ Crea tu cuenta GameShop&lt;/h1&gt;</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43"></a>
+<a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$ok</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45"></a><span class="x">        &lt;div class="alert alert-success"&gt;¡Cuenta creada! Ya puedes iniciar sesión.&lt;/div&gt;</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47"></a>
+<a id="__codelineno-1-48" name="__codelineno-1-48"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$errores</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49"></a><span class="x">        &lt;div class="alert alert-danger"&gt;</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50"></a><span class="x">            &lt;ul class="mb-0"&gt;</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51"></a><span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$errores</span> <span class="k">as</span> <span class="nv">$e</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52"></a><span class="x">                    &lt;li&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$e</span> <span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54"></a><span class="x">            &lt;/ul&gt;</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57"></a>
+<a id="__codelineno-1-58" name="__codelineno-1-58"></a><span class="x">    &lt;form method="post" action=""&gt;</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60"></a><span class="x">            &lt;label for="usuario" class="form-label"&gt;Usuario&lt;/label&gt;</span>
+<a id="__codelineno-1-61" name="__codelineno-1-61"></a><span class="x">            &lt;input type="text" id="usuario" name="usuario" class="form-control"&gt;</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64"></a><span class="x">            &lt;label for="email" class="form-label"&gt;Email&lt;/label&gt;</span>
+<a id="__codelineno-1-65" name="__codelineno-1-65"></a><span class="x">            &lt;input type="email" id="email" name="email" class="form-control"&gt;</span>
+<a id="__codelineno-1-66" name="__codelineno-1-66"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-1-67" name="__codelineno-1-67"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-1-68" name="__codelineno-1-68"></a><span class="x">            &lt;label for="password" class="form-label"&gt;Contraseña&lt;/label&gt;</span>
+<a id="__codelineno-1-69" name="__codelineno-1-69"></a><span class="x">            &lt;input type="text" id="password" name="password" class="form-control"&gt;</span>
+<a id="__codelineno-1-70" name="__codelineno-1-70"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-1-71" name="__codelineno-1-71"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-1-72" name="__codelineno-1-72"></a><span class="x">            &lt;label for="password2" class="form-label"&gt;Repite la contraseña&lt;/label&gt;</span>
+<a id="__codelineno-1-73" name="__codelineno-1-73"></a><span class="x">            &lt;input type="password" id="password2" name="password2" class="form-control"&gt;</span>
+<a id="__codelineno-1-74" name="__codelineno-1-74"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-1-75" name="__codelineno-1-75"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-1-76" name="__codelineno-1-76"></a><span class="x">            &lt;label for="edad" class="form-label"&gt;Edad&lt;/label&gt;</span>
+<a id="__codelineno-1-77" name="__codelineno-1-77"></a><span class="x">            &lt;input type="number" id="edad" name="edad" class="form-control"&gt;</span>
+<a id="__codelineno-1-78" name="__codelineno-1-78"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-1-79" name="__codelineno-1-79"></a><span class="x">        &lt;button type="submit" class="btn btn-primary"&gt;Registrarme&lt;/button&gt;</span>
+<a id="__codelineno-1-80" name="__codelineno-1-80"></a><span class="x">    &lt;/form&gt;</span>
+<a id="__codelineno-1-81" name="__codelineno-1-81"></a><span class="x">&lt;/body&gt;</span>
+<a id="__codelineno-1-82" name="__codelineno-1-82"></a><span class="x">&lt;/html&gt;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="formulario-3-buscador-del-catalogo">Formulario 3 · Buscador del catálogo</h2>
+<blockquote>
+<p>Si buscas "Elden" no aparece <em>Elden Ring</em>. Y eso es solo el principio.</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">3_busqueda.php</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span>
+<span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span>
+<span class="normal"><a href="#__codelineno-2-46">46</a></span>
+<span class="normal"><a href="#__codelineno-2-47">47</a></span>
+<span class="normal"><a href="#__codelineno-2-48">48</a></span>
+<span class="normal"><a href="#__codelineno-2-49">49</a></span>
+<span class="normal"><a href="#__codelineno-2-50">50</a></span>
+<span class="normal"><a href="#__codelineno-2-51">51</a></span>
+<span class="normal"><a href="#__codelineno-2-52">52</a></span>
+<span class="normal"><a href="#__codelineno-2-53">53</a></span>
+<span class="normal"><a href="#__codelineno-2-54">54</a></span>
+<span class="normal"><a href="#__codelineno-2-55">55</a></span>
+<span class="normal"><a href="#__codelineno-2-56">56</a></span>
+<span class="normal"><a href="#__codelineno-2-57">57</a></span>
+<span class="normal"><a href="#__codelineno-2-58">58</a></span>
+<span class="normal"><a href="#__codelineno-2-59">59</a></span>
+<span class="normal"><a href="#__codelineno-2-60">60</a></span>
+<span class="normal"><a href="#__codelineno-2-61">61</a></span>
+<span class="normal"><a href="#__codelineno-2-62">62</a></span>
+<span class="normal"><a href="#__codelineno-2-63">63</a></span>
+<span class="normal"><a href="#__codelineno-2-64">64</a></span>
+<span class="normal"><a href="#__codelineno-2-65">65</a></span>
+<span class="normal"><a href="#__codelineno-2-66">66</a></span>
+<span class="normal"><a href="#__codelineno-2-67">67</a></span>
+<span class="normal"><a href="#__codelineno-2-68">68</a></span>
+<span class="normal"><a href="#__codelineno-2-69">69</a></span>
+<span class="normal"><a href="#__codelineno-2-70">70</a></span>
+<span class="normal"><a href="#__codelineno-2-71">71</a></span>
+<span class="normal"><a href="#__codelineno-2-72">72</a></span>
+<span class="normal"><a href="#__codelineno-2-73">73</a></span>
+<span class="normal"><a href="#__codelineno-2-74">74</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">// 🎮 GameShop · Formulario roto nº 3 · Buscador del catálogo</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nv">$juegos</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'Elden Ring'</span><span class="p">,</span>           <span class="s1">'plataforma'</span> <span class="o">=&gt;</span> <span class="s1">'PS5'</span><span class="p">,</span>    <span class="s1">'genero'</span> <span class="o">=&gt;</span> <span class="s1">'RPG'</span><span class="p">,</span>         <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">59.99</span><span class="p">],</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'Zelda: Tears of the Kingdom'</span><span class="p">,</span> <span class="s1">'plataforma'</span> <span class="o">=&gt;</span> <span class="s1">'Switch'</span><span class="p">,</span> <span class="s1">'genero'</span> <span class="o">=&gt;</span> <span class="s1">'Aventura'</span><span class="p">,</span> <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">69.99</span><span class="p">],</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'Hades II'</span><span class="p">,</span>             <span class="s1">'plataforma'</span> <span class="o">=&gt;</span> <span class="s1">'PC'</span><span class="p">,</span>     <span class="s1">'genero'</span> <span class="o">=&gt;</span> <span class="s1">'Roguelike'</span><span class="p">,</span>   <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">29.99</span><span class="p">],</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'EA Sports FC 26'</span><span class="p">,</span>      <span class="s1">'plataforma'</span> <span class="o">=&gt;</span> <span class="s1">'PS5'</span><span class="p">,</span>    <span class="s1">'genero'</span> <span class="o">=&gt;</span> <span class="s1">'Deportes'</span><span class="p">,</span>    <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">79.99</span><span class="p">],</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'Mario Kart World'</span><span class="p">,</span>     <span class="s1">'plataforma'</span> <span class="o">=&gt;</span> <span class="s1">'Switch'</span><span class="p">,</span> <span class="s1">'genero'</span> <span class="o">=&gt;</span> <span class="s1">'Carreras'</span><span class="p">,</span>    <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">79.99</span><span class="p">],</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'Baldur\'s Gate 3'</span><span class="p">,</span>     <span class="s1">'plataforma'</span> <span class="o">=&gt;</span> <span class="s1">'PC'</span><span class="p">,</span>     <span class="s1">'genero'</span> <span class="o">=&gt;</span> <span class="s1">'RPG'</span><span class="p">,</span>         <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">49.99</span><span class="p">],</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'Forza Horizon 5'</span><span class="p">,</span>      <span class="s1">'plataforma'</span> <span class="o">=&gt;</span> <span class="s1">'Xbox'</span><span class="p">,</span>   <span class="s1">'genero'</span> <span class="o">=&gt;</span> <span class="s1">'Carreras'</span><span class="p">,</span>    <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">39.99</span><span class="p">],</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>    <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'Hollow Knight: Silksong'</span><span class="p">,</span> <span class="s1">'plataforma'</span> <span class="o">=&gt;</span> <span class="s1">'PC'</span><span class="p">,</span>  <span class="s1">'genero'</span> <span class="o">=&gt;</span> <span class="s1">'Aventura'</span><span class="p">,</span>    <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">19.99</span><span class="p">],</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="p">];</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="nv">$q</span>          <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'q'</span><span class="p">]);</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="nv">$plataforma</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'plat'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="nv">$generos</span>    <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'genero'</span><span class="p">]</span> <span class="o">??</span> <span class="p">[];</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="nv">$resultados</span> <span class="o">=</span> <span class="nb">array_filter</span><span class="p">(</span><span class="nv">$juegos</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$j</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$q</span><span class="p">,</span> <span class="nv">$plataforma</span><span class="p">,</span> <span class="nv">$generos</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$q</span> <span class="o">!==</span> <span class="s1">''</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">stripos</span><span class="p">(</span><span class="nv">$j</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">],</span> <span class="nv">$q</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>    <span class="p">}</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$plataforma</span> <span class="o">!==</span> <span class="s1">''</span> <span class="o">&amp;&amp;</span> <span class="nv">$j</span><span class="p">[</span><span class="s1">'plataforma'</span><span class="p">]</span> <span class="o">!==</span> <span class="nv">$plataforma</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a>        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a>    <span class="p">}</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$generos</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$j</span><span class="p">[</span><span class="s1">'genero'</span><span class="p">],</span> <span class="nv">$generos</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a>        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a>    <span class="p">}</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a>    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="p">});</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="cp">?&gt;</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="x">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="x">&lt;html lang="es"&gt;</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="x">&lt;head&gt;</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="x">    &lt;title&gt;GameShop · Buscar juegos&lt;/title&gt;</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="x">    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="x">&lt;/head&gt;</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="x">&lt;body class="container py-5" style="max-width: 800px"&gt;</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="x">    &lt;h1 class="mb-4"&gt;🔍 Buscar en el catálogo&lt;/h1&gt;</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40"></a>
+<a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="x">    &lt;form method="get" action="buscar.php" class="mb-4"&gt;</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="x">            &lt;input type="text" name="q" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$q</span> <span class="cp">?&gt;</span><span class="x">" class="form-control" placeholder="Título del juego..."&gt;</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="x">            &lt;select name="plataforma" class="form-select"&gt;</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="x">                &lt;option value=""&gt;Todas las plataformas&lt;/option&gt;</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="x">                &lt;option value="PS5"&gt;PS5&lt;/option&gt;</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="x">                &lt;option value="Switch"&gt;Switch&lt;/option&gt;</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="x">                &lt;option value="Xbox"&gt;Xbox&lt;/option&gt;</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="x">                &lt;option value="PC"&gt;PC&lt;/option&gt;</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="x">            &lt;/select&gt;</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="x">            &lt;label class="me-3"&gt;&lt;input type="checkbox" name="genero" value="RPG"&gt; RPG&lt;/label&gt;</span>
+<a id="__codelineno-2-56" name="__codelineno-2-56"></a><span class="x">            &lt;label class="me-3"&gt;&lt;input type="checkbox" name="genero" value="Aventura"&gt; Aventura&lt;/label&gt;</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="x">            &lt;label class="me-3"&gt;&lt;input type="checkbox" name="genero" value="Carreras"&gt; Carreras&lt;/label&gt;</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="x">            &lt;label class="me-3"&gt;&lt;input type="checkbox" name="genero" value="Roguelike"&gt; Roguelike&lt;/label&gt;</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="x">            &lt;label class="me-3"&gt;&lt;input type="checkbox" name="genero" value="Deportes"&gt; Deportes&lt;/label&gt;</span>
+<a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="x">        &lt;button type="submit" class="btn btn-primary"&gt;Buscar&lt;/button&gt;</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="x">    &lt;/form&gt;</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63"></a>
+<a id="__codelineno-2-64" name="__codelineno-2-64"></a><span class="x">    &lt;p&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$resultados</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x"> resultado(s)&lt;/p&gt;</span>
+<a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="x">    &lt;ul class="list-group"&gt;</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66"></a><span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$resultados</span> <span class="k">as</span> <span class="nv">$j</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-2-67" name="__codelineno-2-67"></a><span class="x">            &lt;li class="list-group-item d-flex justify-content-between"&gt;</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68"></a><span class="x">                &lt;span&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$j</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x"> &lt;small class="text-muted"&gt;(</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$j</span><span class="p">[</span><span class="s1">'plataforma'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">)&lt;/small&gt;&lt;/span&gt;</span>
+<a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="x">                &lt;strong&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$j</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">','</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x"> €&lt;/strong&gt;</span>
+<a id="__codelineno-2-70" name="__codelineno-2-70"></a><span class="x">            &lt;/li&gt;</span>
+<a id="__codelineno-2-71" name="__codelineno-2-71"></a><span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72"></a><span class="x">    &lt;/ul&gt;</span>
+<a id="__codelineno-2-73" name="__codelineno-2-73"></a><span class="x">&lt;/body&gt;</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74"></a><span class="x">&lt;/html&gt;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="formulario-4-valora-un-juego">Formulario 4 · Valora un juego</h2>
+<blockquote>
+<p>En cuanto entras, te da las gracias por tu valoración... sin haber valorado nada.</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">4_valoracion.php</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span>
+<span class="normal"><a href="#__codelineno-3-36">36</a></span>
+<span class="normal"><a href="#__codelineno-3-37">37</a></span>
+<span class="normal"><a href="#__codelineno-3-38">38</a></span>
+<span class="normal"><a href="#__codelineno-3-39">39</a></span>
+<span class="normal"><a href="#__codelineno-3-40">40</a></span>
+<span class="normal"><a href="#__codelineno-3-41">41</a></span>
+<span class="normal"><a href="#__codelineno-3-42">42</a></span>
+<span class="normal"><a href="#__codelineno-3-43">43</a></span>
+<span class="normal"><a href="#__codelineno-3-44">44</a></span>
+<span class="normal"><a href="#__codelineno-3-45">45</a></span>
+<span class="normal"><a href="#__codelineno-3-46">46</a></span>
+<span class="normal"><a href="#__codelineno-3-47">47</a></span>
+<span class="normal"><a href="#__codelineno-3-48">48</a></span>
+<span class="normal"><a href="#__codelineno-3-49">49</a></span>
+<span class="normal"><a href="#__codelineno-3-50">50</a></span>
+<span class="normal"><a href="#__codelineno-3-51">51</a></span>
+<span class="normal"><a href="#__codelineno-3-52">52</a></span>
+<span class="normal"><a href="#__codelineno-3-53">53</a></span>
+<span class="normal"><a href="#__codelineno-3-54">54</a></span>
+<span class="normal"><a href="#__codelineno-3-55">55</a></span>
+<span class="normal"><a href="#__codelineno-3-56">56</a></span>
+<span class="normal"><a href="#__codelineno-3-57">57</a></span>
+<span class="normal"><a href="#__codelineno-3-58">58</a></span>
+<span class="normal"><a href="#__codelineno-3-59">59</a></span>
+<span class="normal"><a href="#__codelineno-3-60">60</a></span>
+<span class="normal"><a href="#__codelineno-3-61">61</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1">// 🎮 GameShop · Formulario roto nº 4 · Valora un juego</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="nv">$juegos</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Elden Ring'</span><span class="p">,</span> <span class="s1">'Hades II'</span><span class="p">,</span> <span class="s1">'Mario Kart World'</span><span class="p">,</span> <span class="s1">'Baldur\'s Gate 3'</span><span class="p">];</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="nv">$errores</span>    <span class="o">=</span> <span class="p">[];</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="nv">$juego</span>      <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'juego'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="nv">$puntuacion</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'puntuacion'</span><span class="p">]</span> <span class="o">??</span> <span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="nv">$comentario</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'comentario'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$puntuacion</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$puntuacion</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>    <span class="nv">$errores</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">'La puntuación debe estar entre 1 y 5 estrellas.'</span><span class="p">;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="p">}</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$comentario</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>    <span class="nv">$errores</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">'Escribe un comentario sobre el juego.'</span><span class="p">;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="p">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$errores</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>    <span class="c1">// Aquí se guardaría la valoración...</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a>    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: gracias.php'</span><span class="p">);</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="p">}</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="cp">?&gt;</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="x">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="x">&lt;html lang="es"&gt;</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="x">&lt;head&gt;</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="x">    &lt;title&gt;GameShop · Valorar juego&lt;/title&gt;</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="x">    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="x">&lt;/head&gt;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="x">&lt;body class="container py-5" style="max-width: 600px"&gt;</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="x">    &lt;h1 class="mb-4"&gt;⭐ Valora un juego&lt;/h1&gt;</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$errores</span> <span class="k">as</span> <span class="nv">$e</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="x">        &lt;div class="alert alert-danger"&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$e</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a>
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="x">    &lt;form method="post" action=""&gt;</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="x">            &lt;label for="juego" class="form-label"&gt;Juego&lt;/label&gt;</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="x">            &lt;select id="juego" name="juego" class="form-select"&gt;</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$juegos</span> <span class="k">as</span> <span class="nv">$j</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="x">                    &lt;option value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$j</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$j</span> <span class="cp">?&gt;</span><span class="x">&lt;/option&gt;</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="x">            &lt;/select&gt;</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="x">            &lt;p class="form-label mb-1"&gt;Puntuación&lt;/p&gt;</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="x">            &lt;label class="me-2"&gt;&lt;input type="radio" name="p1" value="1"&gt; ⭐&lt;/label&gt;</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="x">            &lt;label class="me-2"&gt;&lt;input type="radio" name="p2" value="2"&gt; ⭐⭐&lt;/label&gt;</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="x">            &lt;label class="me-2"&gt;&lt;input type="radio" name="p3" value="3"&gt; ⭐⭐⭐&lt;/label&gt;</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="x">            &lt;label class="me-2"&gt;&lt;input type="radio" name="p4" value="4"&gt; ⭐⭐⭐⭐&lt;/label&gt;</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51"></a><span class="x">            &lt;label class="me-2"&gt;&lt;input type="radio" name="p5" value="5"&gt; ⭐⭐⭐⭐⭐&lt;/label&gt;</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-3-53" name="__codelineno-3-53"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-3-54" name="__codelineno-3-54"></a><span class="x">            &lt;label for="comentario" class="form-label"&gt;Comentario&lt;/label&gt;</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="x">            &lt;textarea id="comentario" name="comentario" rows="4" class="form-control"</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56"></a><span class="x">                      value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$comentario</span> <span class="cp">?&gt;</span><span class="x">"&gt;&lt;/textarea&gt;</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="x">        &lt;button type="submit" class="btn btn-primary"&gt;Enviar valoración&lt;/button&gt;</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="x">    &lt;/form&gt;</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="x">&lt;/body&gt;</span>
+<a id="__codelineno-3-61" name="__codelineno-3-61"></a><span class="x">&lt;/html&gt;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="formulario-5-comprar-con-codigo-promocional">Formulario 5 · Comprar con código promocional</h2>
+<blockquote>
+<p>Contabilidad dice que hay pedidos con importes muy raros. Prueba a comprar 3 unidades con envío urgente y el código <code>GAMER10</code>.</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">5_pedido.php</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span>
+<span class="normal"><a href="#__codelineno-4-28">28</a></span>
+<span class="normal"><a href="#__codelineno-4-29">29</a></span>
+<span class="normal"><a href="#__codelineno-4-30">30</a></span>
+<span class="normal"><a href="#__codelineno-4-31">31</a></span>
+<span class="normal"><a href="#__codelineno-4-32">32</a></span>
+<span class="normal"><a href="#__codelineno-4-33">33</a></span>
+<span class="normal"><a href="#__codelineno-4-34">34</a></span>
+<span class="normal"><a href="#__codelineno-4-35">35</a></span>
+<span class="normal"><a href="#__codelineno-4-36">36</a></span>
+<span class="normal"><a href="#__codelineno-4-37">37</a></span>
+<span class="normal"><a href="#__codelineno-4-38">38</a></span>
+<span class="normal"><a href="#__codelineno-4-39">39</a></span>
+<span class="normal"><a href="#__codelineno-4-40">40</a></span>
+<span class="normal"><a href="#__codelineno-4-41">41</a></span>
+<span class="normal"><a href="#__codelineno-4-42">42</a></span>
+<span class="normal"><a href="#__codelineno-4-43">43</a></span>
+<span class="normal"><a href="#__codelineno-4-44">44</a></span>
+<span class="normal"><a href="#__codelineno-4-45">45</a></span>
+<span class="normal"><a href="#__codelineno-4-46">46</a></span>
+<span class="normal"><a href="#__codelineno-4-47">47</a></span>
+<span class="normal"><a href="#__codelineno-4-48">48</a></span>
+<span class="normal"><a href="#__codelineno-4-49">49</a></span>
+<span class="normal"><a href="#__codelineno-4-50">50</a></span>
+<span class="normal"><a href="#__codelineno-4-51">51</a></span>
+<span class="normal"><a href="#__codelineno-4-52">52</a></span>
+<span class="normal"><a href="#__codelineno-4-53">53</a></span>
+<span class="normal"><a href="#__codelineno-4-54">54</a></span>
+<span class="normal"><a href="#__codelineno-4-55">55</a></span>
+<span class="normal"><a href="#__codelineno-4-56">56</a></span>
+<span class="normal"><a href="#__codelineno-4-57">57</a></span>
+<span class="normal"><a href="#__codelineno-4-58">58</a></span>
+<span class="normal"><a href="#__codelineno-4-59">59</a></span>
+<span class="normal"><a href="#__codelineno-4-60">60</a></span>
+<span class="normal"><a href="#__codelineno-4-61">61</a></span>
+<span class="normal"><a href="#__codelineno-4-62">62</a></span>
+<span class="normal"><a href="#__codelineno-4-63">63</a></span>
+<span class="normal"><a href="#__codelineno-4-64">64</a></span>
+<span class="normal"><a href="#__codelineno-4-65">65</a></span>
+<span class="normal"><a href="#__codelineno-4-66">66</a></span>
+<span class="normal"><a href="#__codelineno-4-67">67</a></span>
+<span class="normal"><a href="#__codelineno-4-68">68</a></span>
+<span class="normal"><a href="#__codelineno-4-69">69</a></span>
+<span class="normal"><a href="#__codelineno-4-70">70</a></span>
+<span class="normal"><a href="#__codelineno-4-71">71</a></span>
+<span class="normal"><a href="#__codelineno-4-72">72</a></span>
+<span class="normal"><a href="#__codelineno-4-73">73</a></span>
+<span class="normal"><a href="#__codelineno-4-74">74</a></span>
+<span class="normal"><a href="#__codelineno-4-75">75</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="c1">// 🎮 GameShop · Formulario roto nº 5 · Comprar con código promocional</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nv">$producto</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'Hollow Knight: Silksong'</span><span class="p">,</span> <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">19.99</span><span class="p">];</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="nv">$resumen</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>    <span class="nv">$precio</span>   <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">];</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="nv">$cantidad</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'cantidad'</span><span class="p">]</span> <span class="o">??</span> <span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>    <span class="nv">$envio</span>    <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'envio'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'normal'</span><span class="p">;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>    <span class="nv">$codigo</span>   <span class="o">=</span> <span class="nb">strtoupper</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'codigo'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">));</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>    <span class="nv">$total</span> <span class="o">=</span> <span class="nv">$precio</span> <span class="o">*</span> <span class="nv">$cantidad</span><span class="p">;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a>    <span class="c1">// Oferta 3x2: si compras 3, una sale gratis</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$cantidad</span> <span class="o">===</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a>        <span class="nv">$total</span> <span class="o">-=</span> <span class="nv">$precio</span><span class="p">;</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a>    <span class="p">}</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$envio</span> <span class="o">===</span> <span class="s1">'Urgente'</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a>        <span class="nv">$total</span> <span class="o">+=</span> <span class="mf">4.95</span><span class="p">;</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a>    <span class="p">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a>    <span class="c1">// Código GAMER10: 10 % de descuento</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$codigo</span> <span class="o">===</span> <span class="s1">'GAMER10'</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a>        <span class="nv">$descuento</span> <span class="o">=</span> <span class="nv">$total</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a>        <span class="nv">$total</span> <span class="o">=</span> <span class="nv">$descuento</span><span class="p">;</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a>    <span class="p">}</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29"></a>
+<a id="__codelineno-4-30" name="__codelineno-4-30"></a>    <span class="nv">$resumen</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31"></a>        <span class="s1">'cantidad'</span> <span class="o">=&gt;</span> <span class="nv">$cantidad</span><span class="p">,</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32"></a>        <span class="s1">'envio'</span>    <span class="o">=&gt;</span> <span class="nv">$envio</span><span class="p">,</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33"></a>        <span class="s1">'total'</span>    <span class="o">=&gt;</span> <span class="nv">$total</span><span class="p">,</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34"></a>    <span class="p">];</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="p">}</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36"></a><span class="cp">?&gt;</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37"></a><span class="x">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38"></a><span class="x">&lt;html lang="es"&gt;</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="x">&lt;head&gt;</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40"></a><span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41"></a><span class="x">    &lt;title&gt;GameShop · Comprar&lt;/title&gt;</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42"></a><span class="x">    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;</span>
+<a id="__codelineno-4-43" name="__codelineno-4-43"></a><span class="x">&lt;/head&gt;</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44"></a><span class="x">&lt;body class="container py-5" style="max-width: 600px"&gt;</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45"></a><span class="x">    &lt;h1 class="mb-2"&gt;🛒 </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$producto</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46"></a><span class="x">    &lt;p class="lead"&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$producto</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">','</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x"> € · &lt;span class="badge bg-success"&gt;3x2&lt;/span&gt;&lt;/p&gt;</span>
+<a id="__codelineno-4-47" name="__codelineno-4-47"></a>
+<a id="__codelineno-4-48" name="__codelineno-4-48"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$resumen</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49"></a><span class="x">        &lt;div class="alert alert-info"&gt;</span>
+<a id="__codelineno-4-50" name="__codelineno-4-50"></a><span class="x">            </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$resumen</span><span class="p">[</span><span class="s1">'cantidad'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x"> unidad(es) · envío </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$resumen</span><span class="p">[</span><span class="s1">'envio'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">&lt;br&gt;</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51"></a><span class="x">            &lt;strong&gt;Total: </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$resumen</span><span class="p">[</span><span class="s1">'total'</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">','</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x"> €&lt;/strong&gt;</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-4-53" name="__codelineno-4-53"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-4-54" name="__codelineno-4-54"></a>
+<a id="__codelineno-4-55" name="__codelineno-4-55"></a><span class="x">    &lt;form method="post" action=""&gt;</span>
+<a id="__codelineno-4-56" name="__codelineno-4-56"></a><span class="x">        &lt;input type="hidden" name="precio" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$producto</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<a id="__codelineno-4-57" name="__codelineno-4-57"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-4-58" name="__codelineno-4-58"></a><span class="x">            &lt;label for="cantidad" class="form-label"&gt;Cantidad&lt;/label&gt;</span>
+<a id="__codelineno-4-59" name="__codelineno-4-59"></a><span class="x">            &lt;input type="number" id="cantidad" name="cantidad" value="1" min="1" max="10" class="form-control"&gt;</span>
+<a id="__codelineno-4-60" name="__codelineno-4-60"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-4-61" name="__codelineno-4-61"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-4-62" name="__codelineno-4-62"></a><span class="x">            &lt;label for="envio" class="form-label"&gt;Envío&lt;/label&gt;</span>
+<a id="__codelineno-4-63" name="__codelineno-4-63"></a><span class="x">            &lt;select id="envio" name="envio" class="form-select"&gt;</span>
+<a id="__codelineno-4-64" name="__codelineno-4-64"></a><span class="x">                &lt;option value="normal"&gt;Normal (gratis)&lt;/option&gt;</span>
+<a id="__codelineno-4-65" name="__codelineno-4-65"></a><span class="x">                &lt;option value="urgente"&gt;Urgente (+4,95 €)&lt;/option&gt;</span>
+<a id="__codelineno-4-66" name="__codelineno-4-66"></a><span class="x">            &lt;/select&gt;</span>
+<a id="__codelineno-4-67" name="__codelineno-4-67"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-4-68" name="__codelineno-4-68"></a><span class="x">        &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-4-69" name="__codelineno-4-69"></a><span class="x">            &lt;label for="codigo" class="form-label"&gt;Código promocional&lt;/label&gt;</span>
+<a id="__codelineno-4-70" name="__codelineno-4-70"></a><span class="x">            &lt;input type="text" id="codigo" name="codigo" class="form-control"&gt;</span>
+<a id="__codelineno-4-71" name="__codelineno-4-71"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-4-72" name="__codelineno-4-72"></a><span class="x">        &lt;button type="submit" class="btn btn-success"&gt;Comprar&lt;/button&gt;</span>
+<a id="__codelineno-4-73" name="__codelineno-4-73"></a><span class="x">    &lt;/form&gt;</span>
+<a id="__codelineno-4-74" name="__codelineno-4-74"></a><span class="x">&lt;/body&gt;</span>
+<a id="__codelineno-4-75" name="__codelineno-4-75"></a><span class="x">&lt;/html&gt;</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="hoja-de-registro">📝 Hoja de registro</h2>
+<p>Copia esta tabla en un documento y rellénala con tu pareja. Una fila por error.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Formulario</th>
+<th style="text-align: center;">Línea(s)</th>
+<th>¿Qué falla?</th>
+<th>¿Por qué?</th>
+<th>Corrección propuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition success">
+<p class="admonition-title">¿Has terminado antes de tiempo?</p>
+<p>Elige el formulario que más te haya costado y <strong>repáralo entero</strong>. Si funciona a la primera en el ordenador del profe, son <strong>+20 XP</strong> para tu equipo.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.tabs", "toc.integrate", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

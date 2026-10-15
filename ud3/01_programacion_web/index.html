@@ -857,6 +857,150 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2-validar-nombre-apellidos-y-direccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Validar nombre, apellidos y dirección
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Validar nombre, apellidos y dirección">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nombre-o-apellidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nombre o apellidos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dirección
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#al-mostrar-el-dato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Al mostrar el dato
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-expresiones-regulares-con-preg_match" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Expresiones regulares con preg_match()
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Expresiones regulares con preg_match()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-hace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué hace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anatomia-de-un-patron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomía de un patrón
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chuleta-de-simbolos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chuleta de símbolos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-1-nombre-y-apellidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo 1: nombre y apellidos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-2-direccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo 2: dirección
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-3-contrasena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo 3: contraseña
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consejos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consejos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sanitizar-datos-introducidos-por-usuarios" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1828,9 +1972,10 @@ Al pulsar en enviar, podemos ver cómo en la URL de destino ya <strong>no</stron
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="x">if (isset($_POST["nombre"]) &amp;&amp; !empty($_POST["nombre"])) {</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="x">    $nombre = $_POST["nombre"];</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="x">} else {</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="x">    echo "&lt;div class='alert alert-error' role='alert'&gt;❌ Error: Debe rellenar el campo nombre correctamente&lt;/div&gt;";</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="x">    header("Refresh:5; url=form_example.php");</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="x">}</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="x">    header("Refresh:5; url=form_example.php");</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="x">    echo "&lt;div class='alert alert-error' role='alert'&gt;❌ Error: Debe rellenar el campo nombre correctamente&lt;/div&gt;";</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="x">}</span>
 </code></pre></div>
 <p>Así, si alguien intenta enviar nuestro formulario sin introducir un nombre, mostraría el mensaje de error y, tras 5 segundos, volvería a la página que contiene el formulario.</p>
 <p><img alt="validación datos de un formulario" class="center" src="../img/imagen7.jpg" /></p>
@@ -1844,8 +1989,8 @@ Al pulsar en enviar, podemos ver cómo en la URL de destino ya <strong>no</stron
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="x">$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="x">if ($email === false || $email === null) {</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="x">    echo "&lt;div class='alert alert-danger'&gt;❌ Error: El email no tiene un formato válido.&lt;/div&gt;";</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="x">    header("Refresh:5; url=form_example.php");</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="x">    header("Refresh:5; url=form_example.php");</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="x">    echo "&lt;div class='alert alert-danger'&gt;❌ Error: El email no tiene un formato válido.&lt;/div&gt;";</span>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="x">    exit;</span>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="x">}</span>
 </code></pre></div>
@@ -1875,11 +2020,416 @@ Al pulsar en enviar, podemos ver cómo en la URL de destino ya <strong>no</stron
 <td>Valida que sea un número decimal</td>
 </tr>
 <tr>
-<td><code>FILTER_SANITIZE_STRING</code></td>
-<td>Elimina etiquetas HTML del valor</td>
+<td><code>FILTER_VALIDATE_REGEXP</code></td>
+<td>Valida contra un patrón propio (nombres, códigos postales, DNI…)</td>
+</tr>
+<tr>
+<td><code>FILTER_SANITIZE_FULL_SPECIAL_CHARS</code></td>
+<td>Convierte caracteres especiales en entidades HTML</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p>⚠️ <code>FILTER_SANITIZE_STRING</code> está <strong>obsoleto desde PHP 8.1</strong> y genera un aviso <em>deprecated</em>. No debe usarse.</p>
+</blockquote>
+<p><strong>1. Es más profesional: patrón PRG (<em>Post/Redirect/Get</em>) con mensaje en sesión:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="x">// miform.php</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="x">session_start();</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="x">$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="x">if (!$email) {</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="x">    $_SESSION['error'] = "El email no tiene un formato válido.";</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="x">    header("Location: form_example.php");</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="x">    exit;</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="x">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="x">// form_example.php</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="x">session_start();</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="x">if (isset($_SESSION['error'])) {</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="x">    echo "&lt;div class='alert alert-danger'&gt;❌ " . htmlspecialchars($_SESSION['error']) . "&lt;/div&gt;";</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="x">    unset($_SESSION['error']);   // mensaje "flash": se muestra una sola vez</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="x">}</span>
+</code></pre></div>
+<p>Ventajas frente a <code>Refresh</code>:</p>
+<ul>
+<li>El usuario vuelve al formulario al instante, sin esperar.</li>
+<li>Si pulsa F5 no se reenvía el POST.</li>
+<li><code>Refresh</code> no es una cabecera estándar de HTTP; <code>Location</code> sí lo es.</li>
+<li>Es lo que hace Laravel con <code>redirect()-&gt;back()-&gt;withErrors(...)</code>.</li>
+</ul>
+<p>El <code>exit</code> tras <code>header("Location: ...")</code> es <strong>obligatorio</strong>: <code>header()</code> no detiene el script.</p>
+<h2 id="2-validar-nombre-apellidos-y-direccion">2. Validar nombre, apellidos y dirección</h2>
+<p>Para estos campos <strong>no existe un filtro <code>FILTER_VALIDATE_*</code> específico</strong>, porque no tienen un formato cerrado como un email o una URL. Lo habitual es combinar tres pasos:</p>
+<ol>
+<li><strong>Limpiar y comprobar que no está vacío</strong>: <code>trim()</code>.</li>
+<li><strong>Validar longitud y caracteres permitidos</strong>: <code>mb_strlen()</code> y una expresión regular (<code>preg_match()</code> o <code>FILTER_VALIDATE_REGEXP</code>).</li>
+<li><strong>Escapar al mostrar, no al recibir</strong>: <code>htmlspecialchars()</code> al pintar en HTML. Para la base de datos, consultas preparadas con PDO.</li>
+</ol>
+<h3 id="nombre-o-apellidos">Nombre o apellidos</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="x">$nombre = trim(filter_input(INPUT_POST, 'nombre') ?? '');</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="x">// Letras (incluidas tildes y ñ), espacios, apóstrofo y guion. Entre 2 y 50 caracteres.</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="x">if ($nombre === '' || !preg_match("/^[\p{L} '-]{2,50}$/u", $nombre)) {</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="x">    $errores[] = "El nombre solo puede contener letras, espacios, apóstrofos o guiones (2-50 caracteres).";</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="x">}</span>
+</code></pre></div>
+<p>La misma validación con <code>filter_input</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="x">$nombre = filter_input(INPUT_POST, 'nombre', FILTER_VALIDATE_REGEXP, [</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="x">    'options' =&gt; ['regexp' =&gt; "/^[\p{L} '-]{2,50}$/u"]</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="x">]);</span>
+</code></pre></div>
+<h3 id="direccion">Dirección</h3>
+<p>Una dirección admite números y símbolos como <code>º</code>, <code>ª</code>, <code>/</code>, <code>,</code> o <code>.</code>. Lo normal es ser permisivo y comprobar sobre todo la longitud:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="x">$direccion = trim(filter_input(INPUT_POST, 'direccion') ?? '');</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="x">if ($direccion === '' || mb_strlen($direccion) &gt; 100) {</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="x">    $errores[] = "La dirección es obligatoria y no puede superar los 100 caracteres.";</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="x">}</span>
+</code></pre></div>
+<h3 id="al-mostrar-el-dato">Al mostrar el dato</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="x">echo "Hola, " . htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');</span>
+</code></pre></div>
+<hr />
+<h2 id="3-expresiones-regulares-con-preg_match">3. Expresiones regulares con <code>preg_match()</code></h2>
+<h3 id="que-hace">Qué hace</h3>
+<p>Comprueba si un texto <strong>cumple un patrón</strong>. El patrón es una <strong>expresión regular</strong>: una plantilla que describe qué caracteres se permiten y en qué cantidad.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="x">preg_match($patron, $texto);</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Valor devuelto</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1</code></td>
+<td>El texto <strong>cumple</strong> el patrón</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td>El texto <strong>no cumple</strong> el patrón</td>
+</tr>
+<tr>
+<td><code>false</code></td>
+<td>El patrón está mal escrito (error nuestro, no del usuario)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="x">if (preg_match('/^[0-9]+$/', $edad)) {</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="x">    echo "Solo contiene números";</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="x">} else {</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="x">    echo "Contiene algo que no es un número";</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="x">}</span>
+</code></pre></div>
+<h3 id="anatomia-de-un-patron">Anatomía de un patrón</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>/^[\p{L} '-]{2,50}$/u
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Nombre</th>
+<th>Qué significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/ ... /</code></td>
+<td>Delimitadores</td>
+<td>Marcan dónde empieza y acaba el patrón</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>Inicio</td>
+<td>"El texto empieza aquí"</td>
+</tr>
+<tr>
+<td><code>[ ... ]</code></td>
+<td>Clase de caracteres</td>
+<td>"Cualquiera de estos caracteres"</td>
+</tr>
+<tr>
+<td><code>\p{L}</code></td>
+<td>Letra Unicode</td>
+<td>Cualquier letra: a-z, A-Z, á, é, ñ, ç, ü…</td>
+</tr>
+<tr>
+<td><code>' -</code></td>
+<td>Caracteres literales</td>
+<td>Espacio, apóstrofo y guion, tal cual</td>
+</tr>
+<tr>
+<td><code>{2,50}</code></td>
+<td>Cuantificador</td>
+<td>"Entre 2 y 50 de los anteriores"</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>Final</td>
+<td>"El texto acaba aquí"</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>Modificador</td>
+<td>"Trabaja en UTF-8", imprescindible para tildes y ñ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Idea clave:</strong> <code>^</code> y <code>$</code> obligan a que <strong>todo</strong> el texto cumpla el patrón.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="x">preg_match('/[0-9]+/',   'abc123');   // 1 → hay números en algún sitio</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="x">preg_match('/^[0-9]+$/', 'abc123');   // 0 → no son TODO números</span>
+</code></pre></div>
+<h3 id="chuleta-de-simbolos">Chuleta de símbolos</h3>
+<table>
+<thead>
+<tr>
+<th>Símbolo</th>
+<th>Significado</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[abc]</code></td>
+<td>a, b o c</td>
+<td><code>[aeiou]</code> → una vocal</td>
+</tr>
+<tr>
+<td><code>[a-z]</code></td>
+<td>Rango</td>
+<td><code>[0-9]</code> → un dígito</td>
+</tr>
+<tr>
+<td><code>[^abc]</code></td>
+<td>Cualquiera <strong>excepto</strong> a, b, c</td>
+<td><code>[^0-9]</code> → algo que no es dígito</td>
+</tr>
+<tr>
+<td><code>\d</code></td>
+<td>Un dígito (= <code>[0-9]</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>Espacio en blanco (espacio, tabulador, salto de línea)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>\p{L}</code></td>
+<td>Una letra de cualquier idioma</td>
+<td></td>
+</tr>
+<tr>
+<td><code>\p{N}</code></td>
+<td>Un número de cualquier tipo</td>
+<td></td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>Cualquier carácter</td>
+<td></td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>1 o más veces</td>
+<td><code>\d+</code> → uno o más dígitos</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>0 o más veces</td>
+<td></td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>0 o 1 vez (opcional)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>{5}</code></td>
+<td>Exactamente 5</td>
+<td><code>\d{5}</code> → 5 dígitos</td>
+</tr>
+<tr>
+<td><code>{2,50}</code></td>
+<td>Entre 2 y 50</td>
+<td></td>
+</tr>
+<tr>
+<td><code>{8,}</code></td>
+<td>8 o más</td>
+<td></td>
+</tr>
+<tr>
+<td><code>( ... )</code></td>
+<td>Grupo</td>
+<td></td>
+</tr>
+<tr>
+<td><code>a\|b</code></td>
+<td>a o b</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Para usar un símbolo especial como carácter normal se <strong>escapa</strong> con <code>\</code>: <code>\.</code> es un punto literal y <code>\/</code> una barra.</p>
+<h3 id="ejemplo-1-nombre-y-apellidos">Ejemplo 1: nombre y apellidos</h3>
+<p>Permitimos letras (con tildes y ñ), espacios, apóstrofos (O'Brien) y guiones (Pérez-Reverte).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="x">$nombre = trim($_POST['nombre'] ?? '');</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="x">if (!preg_match("/^[\p{L} '-]{2,50}$/u", $nombre)) {</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="x">    $errores['nombre'] = "El nombre solo puede contener letras, espacios, apóstrofos o guiones (2-50 caracteres).";</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="x">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Entrada</th>
+<th>Resultado</th>
+<th>Motivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>José</code></td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td><code>María del Carmen</code></td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Pérez-Reverte</code></td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Ana2</code></td>
+<td>❌</td>
+<td>Contiene un número</td>
+</tr>
+<tr>
+<td><code>&lt;script&gt;</code></td>
+<td>❌</td>
+<td><code>&lt;</code>, <code>&gt;</code> no permitidos</td>
+</tr>
+<tr>
+<td><code>J</code></td>
+<td>❌</td>
+<td>Menos de 2 caracteres</td>
+</tr>
+</tbody>
+</table>
+<p><strong>¿Por qué no <code>[a-zA-Z]</code>?</strong> Solo incluye las 26 letras inglesas: rechazaría "José", "Muñoz" o "Gironès".</p>
+<blockquote>
+<p><strong>Nivel avanzado (opcional):</strong> el patrón anterior acepta cosas como <code>---</code>. Este otro obliga a que haya palabras separadas por <strong>un solo</strong> espacio, apóstrofo o guion:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="x">"/^\p{L}+([ '-]\p{L}+)*$/u"</span>
+</code></pre></div>
+<p>Se lee: "una o más letras, seguidas opcionalmente de grupos de (separador + una o más letras)". La longitud se comprueba aparte con <code>mb_strlen()</code>.</p>
+</blockquote>
+<h3 id="ejemplo-2-direccion">Ejemplo 2: dirección</h3>
+<p>Permitimos letras, números, espacios y <code>.</code> <code>,</code> <code>º</code> <code>ª</code> <code>/</code> <code>#</code> <code>-</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="x">$direccion = trim($_POST['direccion'] ?? '');</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="x">if (!preg_match("/^[\p{L}\p{N} .,ºª\/#-]{5,100}$/u", $direccion)) {</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="x">    $errores['direccion'] = "La dirección contiene caracteres no válidos o no tiene entre 5 y 100 caracteres.";</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="x">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Entrada</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C/ Mayor, 15, 3º B</code></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>Avda. de la Constitución 22</code></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>Calle Sol nº 4 - 1ª</code></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>Calle &lt;b&gt;Falsa&lt;/b&gt;</code></td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>La <code>/</code> se escribe <code>\/</code> porque también es el delimitador del patrón.</li>
+<li>El <code>-</code> va <strong>al final</strong> de los corchetes; en medio indicaría un rango.</li>
+</ul>
+<h3 id="ejemplo-3-contrasena">Ejemplo 3: contraseña</h3>
+<p>Requisitos: mínimo 8 caracteres, al menos una mayúscula, una minúscula, un número y un símbolo.</p>
+<p><strong>Opción A: varias comprobaciones (recomendada).</strong> Más legible y permite decir exactamente qué falta:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="x">$password = $_POST['password'] ?? '';   // ¡sin trim! Los espacios pueden formar parte de la contraseña</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="x">if (mb_strlen($password) &lt; 8) {</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="x">    $errores[] = "Debe tener al menos 8 caracteres.";</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="x">}</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="x">if (!preg_match('/[A-Z]/', $password)) {</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="x">    $errores[] = "Debe contener al menos una mayúscula.";</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="x">}</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="x">if (!preg_match('/[a-z]/', $password)) {</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="x">    $errores[] = "Debe contener al menos una minúscula.";</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="x">}</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="x">if (!preg_match('/[0-9]/', $password)) {</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="x">    $errores[] = "Debe contener al menos un número.";</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="x">}</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="x">if (!preg_match('/[^a-zA-Z0-9]/', $password)) {</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="x">    $errores[] = "Debe contener al menos un símbolo (!, @, #, ...).";</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="x">}</span>
+</code></pre></div>
+<p>Aquí <strong>no</strong> se usan <code>^</code> ni <code>$</code>: solo queremos saber si el carácter aparece <strong>en algún sitio</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Entrada</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hola</code></td>
+<td>❌ corta, sin mayúscula, sin número, sin símbolo</td>
+</tr>
+<tr>
+<td><code>Hola1234</code></td>
+<td>❌ sin símbolo</td>
+</tr>
+<tr>
+<td><code>Hola123!</code></td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Opción B: un solo patrón</strong> (para reconocerlo si aparece en internet):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="x">if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$/', $password)) {</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="x">    $errores[] = "La contraseña no cumple los requisitos.";</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="x">}</span>
+</code></pre></div>
+<p>Cada <code>(?=.*X)</code> es una comprobación anticipada (<em>lookahead</em>): "en algún punto del texto hay una X". <code>.{8,}</code> exige 8 caracteres o más. Funciona, pero es difícil de leer y solo permite un mensaje de error genérico.</p>
+<blockquote>
+<p><strong>Recordatorio:</strong> la contraseña nunca se guarda tal cual. Se guarda <code>password_hash($password, PASSWORD_DEFAULT)</code> y se comprueba con <code>password_verify()</code>.</p>
+</blockquote>
+<h3 id="consejos">Consejos</h3>
+<ol>
+<li><strong>Probad los patrones en <a href="https://regex101.com">regex101.com</a></strong> con el sabor <em>PCRE2 (PHP)</em>.</li>
+<li><strong>Usad comillas simples</strong> para los patrones cuando podáis: con dobles, PHP interpreta algunas <code>\</code> y <code>$</code> antes que la expresión regular.</li>
+<li><strong>Modificador <code>u</code> siempre</strong> que el texto pueda llevar tildes o ñ.</li>
+<li><strong>Validar no es escapar.</strong> Aunque un dato pase <code>preg_match()</code>, al mostrarlo se usa <code>htmlspecialchars()</code> y al guardarlo, consultas preparadas.</li>
+<li><strong>HTML5 puede usar el mismo patrón</strong> con el atributo <code>pattern="..."</code> del <code>&lt;input&gt;</code>, pero la validación en el servidor sigue siendo obligatoria.</li>
+</ol>
 <hr />
 <h2 id="sanitizar-datos-introducidos-por-usuarios">Sanitizar datos introducidos por usuarios</h2>
 <p>Cualquier dato introducido en la página por los usuarios lo tenemos que considerar <strong>poco seguro</strong> y, por lo tanto, nunca debemos confiar en que no puede resultar en un ataque.</p>
@@ -1887,22 +2437,23 @@ Al pulsar en enviar, podemos ver cómo en la URL de destino ya <strong>no</stron
 <h3 id="ataque-xss-cross-site-scripting">Ataque XSS (Cross-Site Scripting)</h3>
 <p>Veamos primero el problema de estos ataques. Un usuario malintencionado podría introducir en el campo <em>Nombre</em> algo como:
 <img alt="Ejemplo Ataque XSS" class="center" src="../img/imagen8.jpg" />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>&lt;script&gt;alert('hola')&lt;/script&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>&lt;script&gt;alert('hola')&lt;/script&gt;
 </code></pre></div></p>
 <p>Sin protección, ese script se ejecutaría en el navegador de cualquier persona que visite la página. 
 <img alt="Ejemplo Ataque XSS" class="center" src="../img/imagen9.jpg" />
 Para solucionarlo, envolvemos la entrada del usuario con <code>htmlspecialchars()</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="x">if (isset($_POST["nombre"]) &amp;&amp; !empty($_POST["nombre"])) {</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="x">    $nombre = htmlspecialchars($_POST["nombre"]);</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="x">} else {</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="x">    echo "&lt;div class='alert alert-error' role='alert'&gt;❌ Error: Debe rellenar el campo nombre correctamente&lt;/div&gt;";</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="x">    header("Refresh:5; url=form_example.php");</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="x">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="x">if (isset($_POST["nombre"]) &amp;&amp; !empty($_POST["nombre"])) {</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="x">    $nombre = htmlspecialchars($_POST["nombre"]);</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="x">} else {</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="x">     $_SESSION['error'] = "El nombre es obligatorio.";</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="x">    header("Location: form_example.php");</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="x">    exit;</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="x">}</span>
 </code></pre></div>
 <p>De este modo, si alguien escribe <code>&lt;script&gt;alert('hola')&lt;/script&gt;</code>
 <img alt="Ejemplo Ataque XSS" class="center" src="../img/imagen10.jpg" /></p>
 <p>La función <code>htmlspecialchars()</code> lo mostrará como:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>&amp;lt;script&amp;gt;alert(&amp;#039;hola&amp;#039;)&amp;lt;/script&amp;gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>&amp;lt;script&amp;gt;alert(&amp;#039;hola&amp;#039;)&amp;lt;/script&amp;gt;
 </code></pre></div>
 <img alt="Ejemplo Ataque XSS" class="center" src="../img/imagen11.jpg" />
 Obtenemos así una respuesta libre de ejecución de código malicioso.</p>
@@ -1920,10 +2471,10 @@ Obtenemos así una respuesta libre de ejecución de código malicioso.</p>
 <p>La finalidad de estos ataques es que una página web maliciosa engañe al navegador del usuario para que envíe una petición a nuestra web sin que el usuario lo sepa. Por ejemplo, si el usuario tiene sesión iniciada en nuestro sitio, el atacante podría ejecutar acciones en su nombre.</p>
 <h3 id="solucion-incorrecta-comprobar-el-http_referer">⚠️ Solución incorrecta: comprobar el HTTP_REFERER</h3>
 <p>Una primera aproximación —que encontraréis en muchos ejemplos antiguos— es comprobar de dónde viene la petición:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="x">// ❌ NO usar esto en producción</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="x">if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST) != $_SERVER['HTTP_HOST']) {</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="x">    die("Error: petición desde dominio externo.");</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="x">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="x">// ❌ NO usar esto en producción</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="x">if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST) != $_SERVER['HTTP_HOST']) {</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="x">    die("Error: petición desde dominio externo.");</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="x">}</span>
 </code></pre></div>
 <p><strong>¿Por qué no es suficiente?</strong> Porque la cabecera <code>HTTP_REFERER</code> es enviada por el navegador del cliente, y puede estar ausente (muchos navegadores, proxies y extensiones de privacidad no la incluyen) o directamente falsificada. No es un mecanismo de seguridad fiable.</p>
 <h3 id="solucion-correcta-token-csrf">✅ Solución correcta: Token CSRF</h3>
@@ -1932,70 +2483,70 @@ Obtenemos así una respuesta libre de ejecución de código malicioso.</p>
 <p><strong>Nota:</strong> Si ya habéis trabajado con Laravel en UD5, reconoceréis esto: la directiva <code>@csrf</code> de Blade hace exactamente esto de forma automática. Aquí lo implementamos a mano para entender qué hay detrás.</p>
 </blockquote>
 <p><strong>Paso 1 — Generar el token en la página del formulario (<code>form_example.php</code>):</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">session_start</span><span class="p">();</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1">// Generamos un token aleatorio y lo guardamos en sesión</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">]))</span> <span class="p">{</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bin2hex</span><span class="p">(</span><span class="nb">random_bytes</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="p">}</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="cp">?&gt;</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="x">&lt;form name="registro" method="post" action="miform.php"&gt;</span>
-<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="x">  &lt;!-- Campo oculto con el token --&gt;</span>
-<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="x">  &lt;input type="hidden" name="csrf_token" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
-<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="x">  &lt;div class="mb-3"&gt;</span>
-<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="x">    &lt;label for="nombre" class="form-label"&gt;Nombre&lt;/label&gt;</span>
-<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="x">    &lt;input type="text" class="form-control" id="nombre" name="nombre" required&gt;</span>
-<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="x">  &lt;/div&gt;</span>
-<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="x">  &lt;!-- ... resto del formulario ... --&gt;</span>
-<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="x">  &lt;button type="submit" class="btn btn-primary w-100"&gt;Enviar&lt;/button&gt;</span>
-<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="x">&lt;/form&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nb">session_start</span><span class="p">();</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1">// Generamos un token aleatorio y lo guardamos en sesión</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">]))</span> <span class="p">{</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bin2hex</span><span class="p">(</span><span class="nb">random_bytes</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="p">}</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="cp">?&gt;</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="x">&lt;form name="registro" method="post" action="miform.php"&gt;</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="x">  &lt;!-- Campo oculto con el token --&gt;</span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="x">  &lt;input type="hidden" name="csrf_token" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="x">  &lt;div class="mb-3"&gt;</span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="x">    &lt;label for="nombre" class="form-label"&gt;Nombre&lt;/label&gt;</span>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="x">    &lt;input type="text" class="form-control" id="nombre" name="nombre" required&gt;</span>
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="x">  &lt;/div&gt;</span>
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="x">  &lt;!-- ... resto del formulario ... --&gt;</span>
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a><span class="x">  &lt;button type="submit" class="btn btn-primary w-100"&gt;Enviar&lt;/button&gt;</span>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a><span class="x">&lt;/form&gt;</span>
 </code></pre></div>
 <p><strong>Paso 2 — Verificar el token en el procesador (<code>miform.php</code>):</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">session_start</span><span class="p">();</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1">// Verificamos que el token existe y coincide con el guardado en sesión</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">if</span> <span class="p">(</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">])</span> <span class="o">||</span>
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">])</span> <span class="o">||</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">]</span> <span class="o">!==</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">]</span>
-<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="k">echo</span> <span class="s2">"&lt;div class='alert alert-danger'&gt;❌ Error: petición no válida.&lt;/div&gt;"</span><span class="p">;</span>
-<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    <span class="nb">header</span><span class="p">(</span><span class="s2">"Refresh:2; url=form_example.php"</span><span class="p">);</span>
-<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>    <span class="k">exit</span><span class="p">;</span>
-<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="p">}</span>
-<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
-<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="c1">// Token correcto: procesamos el formulario con normalidad</span>
-<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">"nombre"</span><span class="p">]);</span>
-<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="c1">// ...</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nb">session_start</span><span class="p">();</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1">// Verificamos que el token existe y coincide con el guardado en sesión</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="k">if</span> <span class="p">(</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>    <span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">])</span> <span class="o">||</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>    <span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">])</span> <span class="o">||</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>    <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">]</span> <span class="o">!==</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'csrf_token'</span><span class="p">]</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'error'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Petición no válida."</span><span class="p">;</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>    <span class="nb">header</span><span class="p">(</span><span class="s2">"Location: form_example.php"</span><span class="p">);</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>    <span class="k">exit</span><span class="p">;</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="p">}</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="c1">// Token correcto: procesamos el formulario con normalidad</span>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">"nombre"</span><span class="p">]);</span>
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="c1">// ...</span>
 </code></pre></div>
 <hr />
 <h2 id="recoger-datos-de-seleccion-multiple">Recoger datos de selección múltiple</h2>
 <p>En el caso de que tengamos algún campo con múltiples valores enviados (por ejemplo, una lista de selección múltiple o a través de checkboxes), el campo del formulario tendrá este aspecto:</p>
 <p>Agregamos el atributo <code>multiple</code> al <code>&lt;select&gt;</code> y el atributo <code>name</code> debe terminar con <code>[]</code> (como un array):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">"mis_opciones[]"</span> <span class="na">multiple</span><span class="p">&gt;</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>  <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"valor1"</span><span class="p">&gt;</span>Opción 1<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>  <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"valor2"</span><span class="p">&gt;</span>Opción 2<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>  <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"valor3"</span><span class="p">&gt;</span>Opción 3<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">"mis_opciones[]"</span> <span class="na">multiple</span><span class="p">&gt;</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>  <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"valor1"</span><span class="p">&gt;</span>Opción 1<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>  <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"valor2"</span><span class="p">&gt;</span>Opción 2<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>  <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"valor3"</span><span class="p">&gt;</span>Opción 3<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>En PHP accedemos a la variable como un array y la recorremos con un bucle <code>foreach</code> para obtener cada valor seleccionado:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="x">$opciones_seleccionadas = $_POST['mis_opciones'];</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="x">foreach ($opciones_seleccionadas as $opcion) {</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="x">    echo "Opción seleccionada: " . $opcion . "&lt;br&gt;";</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="x">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="x">$opciones_seleccionadas = $_POST['mis_opciones'];</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="x">foreach ($opciones_seleccionadas as $opcion) {</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="x">    echo "Opción seleccionada: " . $opcion . "&lt;br&gt;";</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="x">}</span>
 </code></pre></div>
 <hr />
 <h2 id="enviar-archivos-al-servidor-desde-un-formulario">Enviar archivos al servidor desde un formulario</h2>
 <p>Para poder enviar archivos a un servidor desde un formulario, añadimos un campo <code>&lt;input&gt;</code> de tipo <code>file</code>. Además, debemos añadir a la etiqueta <code>&lt;form&gt;</code> el atributo <code>enctype</code> con el valor <code>multipart/form-data</code> para hacer saber al navegador y al servidor que en ese formulario se van a enviar datos de un archivo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"procesar.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span> <span class="na">enctype</span><span class="o">=</span><span class="s">"multipart/form-data"</span><span class="p">&gt;</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"file"</span> <span class="na">name</span><span class="o">=</span><span class="s">"archivo"</span><span class="p">&gt;</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span> <span class="na">value</span><span class="o">=</span><span class="s">"Enviar"</span><span class="p">&gt;</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"procesar.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span> <span class="na">enctype</span><span class="o">=</span><span class="s">"multipart/form-data"</span><span class="p">&gt;</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"file"</span> <span class="na">name</span><span class="o">=</span><span class="s">"archivo"</span><span class="p">&gt;</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span> <span class="na">value</span><span class="o">=</span><span class="s">"Enviar"</span><span class="p">&gt;</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Una vez recibido el formulario por el servidor, el fichero se almacena en una carpeta temporal y debemos moverlo a su ubicación definitiva con la función <code>move_uploaded_file()</code>. La variable global <strong><code>$_FILES</code></strong> contiene toda la información de los archivos que se han subido con el formulario.</p>
 <h3 id="validar-el-archivo-antes-de-moverlo">⚠️ Validar el archivo antes de moverlo</h3>
@@ -2003,77 +2554,77 @@ Obtenemos así una respuesta libre de ejecución de código malicioso.</p>
 <blockquote>
 <p><strong>Importante:</strong> No uses <code>$_FILES['archivo']['type']</code> para validar el tipo. Ese valor lo envía el navegador del cliente y puede falsificarse fácilmente. Usa siempre <strong><code>mime_content_type()</code></strong>, que analiza el contenido real del archivo en el servidor.</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="x">// Tipos de archivo que permitimos</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="x">$tipos_permitidos = ['image/jpeg', 'image/png', 'image/gif', 'application/pdf'];</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="x">// Obtenemos el tipo MIME real del archivo (no el que dice el navegador)</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="x">$tipo_real = mime_content_type($_FILES['archivo']['tmp_name']);</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="x">if (!in_array($tipo_real, $tipos_permitidos)) {</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="x">    echo "&lt;div class='alert alert-danger'&gt;❌ Error: tipo de archivo no permitido.&lt;/div&gt;";</span>
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="x">    exit;</span>
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="x">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="x">// Tipos de archivo que permitimos</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="x">$tipos_permitidos = ['image/jpeg', 'image/png', 'image/gif', 'application/pdf'];</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="x">// Obtenemos el tipo MIME real del archivo (no el que dice el navegador)</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="x">$tipo_real = mime_content_type($_FILES['archivo']['tmp_name']);</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="x">if (!in_array($tipo_real, $tipos_permitidos)) {</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="x">    echo "&lt;div class='alert alert-danger'&gt;❌ Error: tipo de archivo no permitido.&lt;/div&gt;";</span>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="x">    exit;</span>
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a><span class="x">}</span>
 </code></pre></div>
 <h3 id="generar-nombres-de-archivo-unicos">Generar nombres de archivo únicos</h3>
 <p>Si dos usuarios suben un archivo con el mismo nombre, el segundo sobrescribiría al primero. Para evitarlo, generamos un nombre único con <code>bin2hex(random_bytes(8))</code> y conservamos la extensión original:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="x">// Extraemos la extensión original del archivo</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="x">$extension = pathinfo($_FILES['archivo']['name'], PATHINFO_EXTENSION);</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="x">// Generamos un nombre único aleatorio</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="x">$nombre_unico = bin2hex(random_bytes(8)) . '.' . $extension;</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="x">$directorio_destino = "uploads/";</span>
-<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="x">$nombre_archivo_temporal = $_FILES["archivo"]["tmp_name"];</span>
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="x">$ruta_final = $directorio_destino . $nombre_unico;</span>
-<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
-<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="x">if (move_uploaded_file($nombre_archivo_temporal, $ruta_final)) {</span>
-<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="x">    echo "El archivo se ha subido correctamente como: " . $nombre_unico;</span>
-<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="x">} else {</span>
-<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="x">    echo "Error al subir el archivo.";</span>
-<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="x">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="x">// Extraemos la extensión original del archivo</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="x">$extension = pathinfo($_FILES['archivo']['name'], PATHINFO_EXTENSION);</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="x">// Generamos un nombre único aleatorio</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="x">$nombre_unico = bin2hex(random_bytes(8)) . '.' . $extension;</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="x">$directorio_destino = "uploads/";</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="x">$nombre_archivo_temporal = $_FILES["archivo"]["tmp_name"];</span>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="x">$ruta_final = $directorio_destino . $nombre_unico;</span>
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="x">if (move_uploaded_file($nombre_archivo_temporal, $ruta_final)) {</span>
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="x">    echo "El archivo se ha subido correctamente como: " . $nombre_unico;</span>
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="x">} else {</span>
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="x">    echo "Error al subir el archivo.";</span>
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="x">}</span>
 </code></pre></div>
 <h3 id="ejemplo-completo-con-validacion">Ejemplo completo con validación</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nv">$tipos_permitidos</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'image/jpeg'</span><span class="p">,</span> <span class="s1">'image/png'</span><span class="p">,</span> <span class="s1">'image/gif'</span><span class="p">,</span> <span class="s1">'application/pdf'</span><span class="p">];</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1">// 1. Validar tipo MIME real</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nv">$tipo_real</span> <span class="o">=</span> <span class="nb">mime_content_type</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'archivo'</span><span class="p">][</span><span class="s1">'tmp_name'</span><span class="p">]);</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$tipo_real</span><span class="p">,</span> <span class="nv">$tipos_permitidos</span><span class="p">))</span> <span class="p">{</span>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="k">echo</span> <span class="s2">"&lt;div class='alert alert-danger'&gt;❌ Tipo de archivo no permitido.&lt;/div&gt;"</span><span class="p">;</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="k">exit</span><span class="p">;</span>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="p">}</span>
-<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>
-<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="c1">// 2. Generar nombre único</span>
-<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="nv">$extension</span> <span class="o">=</span> <span class="nb">pathinfo</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'archivo'</span><span class="p">][</span><span class="s1">'name'</span><span class="p">],</span> <span class="nx">PATHINFO_EXTENSION</span><span class="p">);</span>
-<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="nv">$nombre_unico</span> <span class="o">=</span> <span class="nb">bin2hex</span><span class="p">(</span><span class="nb">random_bytes</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span> <span class="o">.</span> <span class="s1">'.'</span> <span class="o">.</span> <span class="nv">$extension</span><span class="p">;</span>
-<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>
-<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="c1">// 3. Mover a su ubicación definitiva</span>
-<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="nv">$ruta_final</span> <span class="o">=</span> <span class="s2">"uploads/"</span> <span class="o">.</span> <span class="nv">$nombre_unico</span><span class="p">;</span>
-<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="k">if</span> <span class="p">(</span><span class="nb">move_uploaded_file</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'archivo'</span><span class="p">][</span><span class="s1">'tmp_name'</span><span class="p">],</span> <span class="nv">$ruta_final</span><span class="p">))</span> <span class="p">{</span>
-<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>    <span class="k">echo</span> <span class="s2">"✅ Archivo subido correctamente."</span><span class="p">;</span>
-<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>    <span class="k">echo</span> <span class="s2">"❌ Error al subir el archivo."</span><span class="p">;</span>
-<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a><span class="p">}</span>
-<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a><span class="cp">?&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="nv">$tipos_permitidos</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'image/jpeg'</span><span class="p">,</span> <span class="s1">'image/png'</span><span class="p">,</span> <span class="s1">'image/gif'</span><span class="p">,</span> <span class="s1">'application/pdf'</span><span class="p">];</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1">// 1. Validar tipo MIME real</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="nv">$tipo_real</span> <span class="o">=</span> <span class="nb">mime_content_type</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'archivo'</span><span class="p">][</span><span class="s1">'tmp_name'</span><span class="p">]);</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$tipo_real</span><span class="p">,</span> <span class="nv">$tipos_permitidos</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>    <span class="k">echo</span> <span class="s2">"&lt;div class='alert alert-danger'&gt;❌ Tipo de archivo no permitido.&lt;/div&gt;"</span><span class="p">;</span>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>    <span class="k">exit</span><span class="p">;</span>
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="p">}</span>
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="c1">// 2. Generar nombre único</span>
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="nv">$extension</span> <span class="o">=</span> <span class="nb">pathinfo</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'archivo'</span><span class="p">][</span><span class="s1">'name'</span><span class="p">],</span> <span class="nx">PATHINFO_EXTENSION</span><span class="p">);</span>
+<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="nv">$nombre_unico</span> <span class="o">=</span> <span class="nb">bin2hex</span><span class="p">(</span><span class="nb">random_bytes</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span> <span class="o">.</span> <span class="s1">'.'</span> <span class="o">.</span> <span class="nv">$extension</span><span class="p">;</span>
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>
+<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="c1">// 3. Mover a su ubicación definitiva</span>
+<a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a><span class="nv">$ruta_final</span> <span class="o">=</span> <span class="s2">"uploads/"</span> <span class="o">.</span> <span class="nv">$nombre_unico</span><span class="p">;</span>
+<a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a><span class="k">if</span> <span class="p">(</span><span class="nb">move_uploaded_file</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'archivo'</span><span class="p">][</span><span class="s1">'tmp_name'</span><span class="p">],</span> <span class="nv">$ruta_final</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a>    <span class="k">echo</span> <span class="s2">"✅ Archivo subido correctamente."</span><span class="p">;</span>
+<a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a>    <span class="k">echo</span> <span class="s2">"❌ Error al subir el archivo."</span><span class="p">;</span>
+<a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a><span class="p">}</span>
+<a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a><span class="cp">?&gt;</span>
 </code></pre></div>
 <hr />
 <h2 id="cookies">Cookies</h2>
 <p>Las cookies en PHP son pequeños archivos de texto que se guardan en el navegador del usuario para almacenar datos y recordar información entre visitas. Se crean con la función <strong><code>setcookie()</code></strong> y se leen desde PHP a través de la variable superglobal <strong><code>$_COOKIE</code></strong>. Se usan comúnmente para identificar usuarios, almacenar preferencias o recordar datos como los artículos de un carrito de compras.</p>
 <h3 id="creacion-de-una-cookie">Creación de una cookie</h3>
 <p>Se usa la función <code>setcookie()</code> para crear una cookie. En su forma básica recibe el nombre y el valor, pero en aplicaciones reales debemos usar siempre <strong>las opciones de seguridad</strong>:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1">// ❌ Forma básica (sin opciones de seguridad): evitar en producción</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="nb">setcookie</span><span class="p">(</span><span class="s2">"nombre_usuario"</span><span class="p">,</span> <span class="s2">"Paco"</span><span class="p">);</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1">// ✅ Forma correcta con opciones de seguridad</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="nb">setcookie</span><span class="p">(</span><span class="s2">"nombre_usuario"</span><span class="p">,</span> <span class="s2">"Paco"</span><span class="p">,</span> <span class="p">[</span>
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="s1">'expires'</span>  <span class="o">=&gt;</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">),</span> <span class="c1">// caduca en 30 días</span>
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    <span class="s1">'path'</span>     <span class="o">=&gt;</span> <span class="s1">'/'</span><span class="p">,</span>                            <span class="c1">// disponible en toda la web</span>
-<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    <span class="s1">'secure'</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>                           <span class="c1">// solo se envía por HTTPS</span>
-<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>    <span class="s1">'httponly'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>                           <span class="c1">// no accesible desde JavaScript</span>
-<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>    <span class="s1">'samesite'</span> <span class="o">=&gt;</span> <span class="s1">'Strict'</span>                        <span class="c1">// protección adicional contra CSRF</span>
-<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="p">]);</span>
-<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="cp">?&gt;</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="c1">// ❌ Forma básica (sin opciones de seguridad): evitar en producción</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="nb">setcookie</span><span class="p">(</span><span class="s2">"nombre_usuario"</span><span class="p">,</span> <span class="s2">"Paco"</span><span class="p">);</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="c1">// ✅ Forma correcta con opciones de seguridad</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="nb">setcookie</span><span class="p">(</span><span class="s2">"nombre_usuario"</span><span class="p">,</span> <span class="s2">"Paco"</span><span class="p">,</span> <span class="p">[</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>    <span class="s1">'expires'</span>  <span class="o">=&gt;</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">),</span> <span class="c1">// caduca en 30 días</span>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>    <span class="s1">'path'</span>     <span class="o">=&gt;</span> <span class="s1">'/'</span><span class="p">,</span>                            <span class="c1">// disponible en toda la web</span>
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>    <span class="s1">'secure'</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>                           <span class="c1">// solo se envía por HTTPS</span>
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>    <span class="s1">'httponly'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>                           <span class="c1">// no accesible desde JavaScript</span>
+<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>    <span class="s1">'samesite'</span> <span class="o">=&gt;</span> <span class="s1">'Strict'</span>                        <span class="c1">// protección adicional contra CSRF</span>
+<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a><span class="p">]);</span>
+<a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a><span class="cp">?&gt;</span>
 </code></pre></div>
 <img alt="Creación de una cookie" class="center" src="../img/imagen12.jpg" /></p>
 <div class="admonition warning">
@@ -2086,29 +2637,29 @@ Obtenemos así una respuesta libre de ejecución de código malicioso.</p>
 </div>
 <h3 id="como-leer-una-cookie">Cómo leer una cookie</h3>
 <p>Se accede al valor de una cookie a través del array superglobal <code>$_COOKIE</code>, utilizando el nombre de la cookie como índice:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s2">"nombre_usuario"</span><span class="p">]))</span> <span class="p">{</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="c1">// Sanitizamos igual que cualquier dato externo</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="nv">$usuario</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s2">"nombre_usuario"</span><span class="p">]);</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>    <span class="k">echo</span> <span class="s2">"Hola, "</span> <span class="o">.</span> <span class="nv">$usuario</span> <span class="o">.</span> <span class="s2">"! Bienvenido de nuevo."</span><span class="p">;</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="k">echo</span> <span class="s2">"Hola, invitado."</span><span class="p">;</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="p">}</span>
-<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="cp">?&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s2">"nombre_usuario"</span><span class="p">]))</span> <span class="p">{</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>    <span class="c1">// Sanitizamos igual que cualquier dato externo</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>    <span class="nv">$usuario</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s2">"nombre_usuario"</span><span class="p">]);</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="k">echo</span> <span class="s2">"Hola, "</span> <span class="o">.</span> <span class="nv">$usuario</span> <span class="o">.</span> <span class="s2">"! Bienvenido de nuevo."</span><span class="p">;</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>    <span class="k">echo</span> <span class="s2">"Hola, invitado."</span><span class="p">;</span>
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="p">}</span>
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="cp">?&gt;</span>
 </code></pre></div>
 <blockquote>
 <p><strong>Nota:</strong> Aunque la cookie la hayamos creado nosotros, al leerla debemos tratarla como cualquier dato externo y aplicar <code>htmlspecialchars()</code> antes de mostrarla en pantalla.</p>
 </blockquote>
 <h3 id="eliminar-una-cookie">Eliminar una cookie</h3>
 <p>Para eliminar una cookie, se utiliza la función <code>setcookie()</code> con el mismo nombre de la cookie, pero estableciendo la fecha de caducidad en el pasado y sin valor:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nb">setcookie</span><span class="p">(</span><span class="s2">"nombre_usuario"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="p">[</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="s1">'expires'</span>  <span class="o">=&gt;</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">3600</span><span class="p">,</span> <span class="c1">// fecha en el pasado</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    <span class="s1">'path'</span>     <span class="o">=&gt;</span> <span class="s1">'/'</span><span class="p">,</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="s1">'httponly'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="s1">'samesite'</span> <span class="o">=&gt;</span> <span class="s1">'Strict'</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="p">]);</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="cp">?&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nb">setcookie</span><span class="p">(</span><span class="s2">"nombre_usuario"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="p">[</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>    <span class="s1">'expires'</span>  <span class="o">=&gt;</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">3600</span><span class="p">,</span> <span class="c1">// fecha en el pasado</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>    <span class="s1">'path'</span>     <span class="o">=&gt;</span> <span class="s1">'/'</span><span class="p">,</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>    <span class="s1">'httponly'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>    <span class="s1">'samesite'</span> <span class="o">=&gt;</span> <span class="s1">'Strict'</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="p">]);</span>
+<a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="cp">?&gt;</span>
 </code></pre></div>
 <hr />
 <h2 id="variables-de-sesion">Variables de Sesión</h2>
@@ -2123,41 +2674,41 @@ Obtenemos así una respuesta libre de ejecución de código malicioso.</p>
 <li><strong>Acceder a los datos</strong>: En cualquier otra página del mismo sitio, al volver a llamar a <code>session_start()</code>, se puede acceder a los mismos datos a través de <code>$_SESSION</code>.</li>
 </ol>
 <h3 id="principales-operaciones">Principales operaciones</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="x">session_start();                    // inicia o carga la sesión</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="x">session_id();                       // obtiene el id (valor de PHPSESSID)</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="x">$_SESSION["clave"] = valor;         // asignamos valor a la sesión</span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="x">session_destroy();                  // destruye la sesión</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="x">unset($_SESSION["clave"]);          // elimina una clave</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="x">session_start();                    // inicia o carga la sesión</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="x">session_id();                       // obtiene el id (valor de PHPSESSID)</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="x">$_SESSION["clave"] = valor;         // asignamos valor a la sesión</span>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="x">session_destroy();                  // destruye la sesión</span>
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="x">unset($_SESSION["clave"]);          // elimina una clave</span>
 </code></pre></div>
 <h3 id="proteccion-contra-session-fixation">Protección contra Session Fixation</h3>
 <p>Existe un ataque llamado <strong>Session Fixation</strong> (fijación de sesión) en el que un atacante consigue que la víctima use un ID de sesión que él mismo conoce de antemano. Si la víctima se autentica con ese ID, el atacante puede acceder a su sesión.</p>
 <p>La solución es muy sencilla: <strong>regenerar el ID de sesión justo después de que el usuario se autentique correctamente</strong>. De este modo, aunque el atacante conozca el ID anterior, el nuevo le será desconocido.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nb">session_start</span><span class="p">();</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1">// El usuario envía usuario y contraseña...</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$credenciales_correctas</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>    <span class="c1">// ✅ Regeneramos el ID antes de guardar datos sensibles en sesión</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="nb">session_regenerate_id</span><span class="p">(</span><span class="k">true</span><span class="p">);</span> <span class="c1">// el parámetro true elimina la sesión antigua</span>
-<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>
-<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$nombre_usuario</span><span class="p">;</span>
-<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'rol'</span><span class="p">]</span>     <span class="o">=</span> <span class="s1">'admin'</span><span class="p">;</span>
-<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>    <span class="nb">header</span><span class="p">(</span><span class="s2">"Location: dashboard.php"</span><span class="p">);</span>
-<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>    <span class="k">exit</span><span class="p">;</span>
-<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="p">}</span>
-<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="cp">?&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="nb">session_start</span><span class="p">();</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="c1">// El usuario envía usuario y contraseña...</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$credenciales_correctas</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>    <span class="c1">// ✅ Regeneramos el ID antes de guardar datos sensibles en sesión</span>
+<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>    <span class="nb">session_regenerate_id</span><span class="p">(</span><span class="k">true</span><span class="p">);</span> <span class="c1">// el parámetro true elimina la sesión antigua</span>
+<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>
+<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$nombre_usuario</span><span class="p">;</span>
+<a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a>    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'rol'</span><span class="p">]</span>     <span class="o">=</span> <span class="s1">'admin'</span><span class="p">;</span>
+<a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a>    <span class="nb">header</span><span class="p">(</span><span class="s2">"Location: dashboard.php"</span><span class="p">);</span>
+<a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a>    <span class="k">exit</span><span class="p">;</span>
+<a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a><span class="p">}</span>
+<a id="__codelineno-40-15" name="__codelineno-40-15" href="#__codelineno-40-15"></a><span class="cp">?&gt;</span>
 </code></pre></div>
 <blockquote>
 <p><strong>Nota:</strong> Si ya habéis trabajado con Laravel en UD5, la autenticación con Breeze gestiona todo esto automáticamente. Aquí lo implementamos a mano para entender qué ocurre por debajo.</p>
 </blockquote>
 <h3 id="ejemplo-de-uso-completo">Ejemplo de uso completo</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="nb">session_start</span><span class="p">();</span>                              <span class="c1">// arrancamos las variables de sesión</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">"ies"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"IES Torrevigia"</span><span class="p">;</span>          <span class="c1">// asignamos valor a la sesión ies</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="nv">$instituto</span> <span class="o">=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">"ies"</span><span class="p">];</span>                <span class="c1">// guardar valor de sesión en variable</span>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="k">echo</span> <span class="s2">"Estamos en el </span><span class="si">$instituto</span><span class="s2">"</span><span class="p">;</span>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="cp">?&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="nb">session_start</span><span class="p">();</span>                              <span class="c1">// arrancamos las variables de sesión</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">"ies"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"IES Torrevigia"</span><span class="p">;</span>          <span class="c1">// asignamos valor a la sesión ies</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="nv">$instituto</span> <span class="o">=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">"ies"</span><span class="p">];</span>                <span class="c1">// guardar valor de sesión en variable</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="k">echo</span> <span class="s2">"Estamos en el </span><span class="si">$instituto</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="cp">?&gt;</span>
 </code></pre></div>
 
 
