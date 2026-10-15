@@ -120,8 +120,9 @@ Antes de nada, utilizamos la función de PHP **`isset()`**, para verificar si un
 if (isset($_POST["nombre"]) && !empty($_POST["nombre"])) {
     $nombre = $_POST["nombre"];
 } else {
-    echo "<div class='alert alert-error' role='alert'>❌ Error: Debe rellenar el campo nombre correctamente</div>";
     header("Refresh:5; url=form_example.php");
+    echo "<div class='alert alert-error' role='alert'>❌ Error: Debe rellenar el campo nombre correctamente</div>";
+    
 }
 ```
 
@@ -141,8 +142,8 @@ Además de comprobar si un campo existe y no está vacío, PHP nos ofrece la fun
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
 if ($email === false || $email === null) {
-    echo "<div class='alert alert-danger'>❌ Error: El email no tiene un formato válido.</div>";
     header("Refresh:5; url=form_example.php");
+    echo "<div class='alert alert-danger'>❌ Error: El email no tiene un formato válido.</div>";
     exit;
 }
 ```
@@ -155,10 +156,268 @@ Los filtros más habituales son:
 | `FILTER_VALIDATE_URL` | Valida que sea una URL correcta |
 | `FILTER_VALIDATE_INT` | Valida que sea un número entero |
 | `FILTER_VALIDATE_FLOAT` | Valida que sea un número decimal |
-| `FILTER_SANITIZE_STRING` | Elimina etiquetas HTML del valor |
+| `FILTER_VALIDATE_REGEXP` | Valida contra un patrón propio (nombres, códigos postales, DNI…) |
+| `FILTER_SANITIZE_FULL_SPECIAL_CHARS` | Convierte caracteres especiales en entidades HTML |
+
+> ⚠️ `FILTER_SANITIZE_STRING` está **obsoleto desde PHP 8.1** y genera un aviso *deprecated*. No debe usarse.
+
+**1. Es más profesional: patrón PRG (*Post/Redirect/Get*) con mensaje en sesión:**
+
+```php
+// miform.php
+session_start();
+
+$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+if (!$email) {
+    $_SESSION['error'] = "El email no tiene un formato válido.";
+    header("Location: form_example.php");
+    exit;
+}
+```
+
+```php
+// form_example.php
+session_start();
+if (isset($_SESSION['error'])) {
+    echo "<div class='alert alert-danger'>❌ " . htmlspecialchars($_SESSION['error']) . "</div>";
+    unset($_SESSION['error']);   // mensaje "flash": se muestra una sola vez
+}
+```
+
+Ventajas frente a `Refresh`:
+
+- El usuario vuelve al formulario al instante, sin esperar.
+- Si pulsa F5 no se reenvía el POST.
+- `Refresh` no es una cabecera estándar de HTTP; `Location` sí lo es.
+- Es lo que hace Laravel con `redirect()->back()->withErrors(...)`.
+
+El `exit` tras `header("Location: ...")` es **obligatorio**: `header()` no detiene el script.
+
+## 2. Validar nombre, apellidos y dirección
+
+Para estos campos **no existe un filtro `FILTER_VALIDATE_*` específico**, porque no tienen un formato cerrado como un email o una URL. Lo habitual es combinar tres pasos:
+
+1. **Limpiar y comprobar que no está vacío**: `trim()`.
+2. **Validar longitud y caracteres permitidos**: `mb_strlen()` y una expresión regular (`preg_match()` o `FILTER_VALIDATE_REGEXP`).
+3. **Escapar al mostrar, no al recibir**: `htmlspecialchars()` al pintar en HTML. Para la base de datos, consultas preparadas con PDO.
+
+### Nombre o apellidos
+
+```php
+$nombre = trim(filter_input(INPUT_POST, 'nombre') ?? '');
+
+// Letras (incluidas tildes y ñ), espacios, apóstrofo y guion. Entre 2 y 50 caracteres.
+if ($nombre === '' || !preg_match("/^[\p{L} '-]{2,50}$/u", $nombre)) {
+    $errores[] = "El nombre solo puede contener letras, espacios, apóstrofos o guiones (2-50 caracteres).";
+}
+```
+
+La misma validación con `filter_input`:
+
+```php
+$nombre = filter_input(INPUT_POST, 'nombre', FILTER_VALIDATE_REGEXP, [
+    'options' => ['regexp' => "/^[\p{L} '-]{2,50}$/u"]
+]);
+```
+
+### Dirección
+
+Una dirección admite números y símbolos como `º`, `ª`, `/`, `,` o `.`. Lo normal es ser permisivo y comprobar sobre todo la longitud:
+
+```php
+$direccion = trim(filter_input(INPUT_POST, 'direccion') ?? '');
+
+if ($direccion === '' || mb_strlen($direccion) > 100) {
+    $errores[] = "La dirección es obligatoria y no puede superar los 100 caracteres.";
+}
+```
+
+### Al mostrar el dato
+
+```php
+echo "Hola, " . htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
+```
 
 ---
+## 3. Expresiones regulares con `preg_match()`
 
+### Qué hace
+
+Comprueba si un texto **cumple un patrón**. El patrón es una **expresión regular**: una plantilla que describe qué caracteres se permiten y en qué cantidad.
+
+```php
+preg_match($patron, $texto);
+```
+
+| Valor devuelto | Significado |
+|---|---|
+| `1` | El texto **cumple** el patrón |
+| `0` | El texto **no cumple** el patrón |
+| `false` | El patrón está mal escrito (error nuestro, no del usuario) |
+
+```php
+if (preg_match('/^[0-9]+$/', $edad)) {
+    echo "Solo contiene números";
+} else {
+    echo "Contiene algo que no es un número";
+}
+```
+
+### Anatomía de un patrón
+
+```
+/^[\p{L} '-]{2,50}$/u
+```
+
+| Pieza | Nombre | Qué significa |
+|---|---|---|
+| `/ ... /` | Delimitadores | Marcan dónde empieza y acaba el patrón |
+| `^` | Inicio | "El texto empieza aquí" |
+| `[ ... ]` | Clase de caracteres | "Cualquiera de estos caracteres" |
+| `\p{L}` | Letra Unicode | Cualquier letra: a-z, A-Z, á, é, ñ, ç, ü… |
+| `' -` | Caracteres literales | Espacio, apóstrofo y guion, tal cual |
+| `{2,50}` | Cuantificador | "Entre 2 y 50 de los anteriores" |
+| `$` | Final | "El texto acaba aquí" |
+| `u` | Modificador | "Trabaja en UTF-8", imprescindible para tildes y ñ |
+
+**Idea clave:** `^` y `$` obligan a que **todo** el texto cumpla el patrón.
+
+```php
+preg_match('/[0-9]+/',   'abc123');   // 1 → hay números en algún sitio
+preg_match('/^[0-9]+$/', 'abc123');   // 0 → no son TODO números
+```
+
+### Chuleta de símbolos
+
+| Símbolo | Significado | Ejemplo |
+|---|---|---|
+| `[abc]` | a, b o c | `[aeiou]` → una vocal |
+| `[a-z]` | Rango | `[0-9]` → un dígito |
+| `[^abc]` | Cualquiera **excepto** a, b, c | `[^0-9]` → algo que no es dígito |
+| `\d` | Un dígito (= `[0-9]`) | |
+| `\s` | Espacio en blanco (espacio, tabulador, salto de línea) | |
+| `\p{L}` | Una letra de cualquier idioma | |
+| `\p{N}` | Un número de cualquier tipo | |
+| `.` | Cualquier carácter | |
+| `+` | 1 o más veces | `\d+` → uno o más dígitos |
+| `*` | 0 o más veces | |
+| `?` | 0 o 1 vez (opcional) | |
+| `{5}` | Exactamente 5 | `\d{5}` → 5 dígitos |
+| `{2,50}` | Entre 2 y 50 | |
+| `{8,}` | 8 o más | |
+| `( ... )` | Grupo | |
+| `a\|b` | a o b | |
+
+Para usar un símbolo especial como carácter normal se **escapa** con `\`: `\.` es un punto literal y `\/` una barra.
+
+### Ejemplo 1: nombre y apellidos
+
+Permitimos letras (con tildes y ñ), espacios, apóstrofos (O'Brien) y guiones (Pérez-Reverte).
+
+```php
+$nombre = trim($_POST['nombre'] ?? '');
+
+if (!preg_match("/^[\p{L} '-]{2,50}$/u", $nombre)) {
+    $errores['nombre'] = "El nombre solo puede contener letras, espacios, apóstrofos o guiones (2-50 caracteres).";
+}
+```
+
+| Entrada | Resultado | Motivo |
+|---|---|---|
+| `José` | ✅ | |
+| `María del Carmen` | ✅ | |
+| `Pérez-Reverte` | ✅ | |
+| `Ana2` | ❌ | Contiene un número |
+| `<script>` | ❌ | `<`, `>` no permitidos |
+| `J` | ❌ | Menos de 2 caracteres |
+
+**¿Por qué no `[a-zA-Z]`?** Solo incluye las 26 letras inglesas: rechazaría "José", "Muñoz" o "Gironès".
+
+> **Nivel avanzado (opcional):** el patrón anterior acepta cosas como `---`. Este otro obliga a que haya palabras separadas por **un solo** espacio, apóstrofo o guion:
+>
+> ```php
+> "/^\p{L}+([ '-]\p{L}+)*$/u"
+> ```
+>
+> Se lee: "una o más letras, seguidas opcionalmente de grupos de (separador + una o más letras)". La longitud se comprueba aparte con `mb_strlen()`.
+
+### Ejemplo 2: dirección
+
+Permitimos letras, números, espacios y `.` `,` `º` `ª` `/` `#` `-`.
+
+```php
+$direccion = trim($_POST['direccion'] ?? '');
+
+if (!preg_match("/^[\p{L}\p{N} .,ºª\/#-]{5,100}$/u", $direccion)) {
+    $errores['direccion'] = "La dirección contiene caracteres no válidos o no tiene entre 5 y 100 caracteres.";
+}
+```
+
+| Entrada | Resultado |
+|---|---|
+| `C/ Mayor, 15, 3º B` | ✅ |
+| `Avda. de la Constitución 22` | ✅ |
+| `Calle Sol nº 4 - 1ª` | ✅ |
+| `Calle <b>Falsa</b>` | ❌ |
+
+- La `/` se escribe `\/` porque también es el delimitador del patrón.
+- El `-` va **al final** de los corchetes; en medio indicaría un rango.
+
+### Ejemplo 3: contraseña
+
+Requisitos: mínimo 8 caracteres, al menos una mayúscula, una minúscula, un número y un símbolo.
+
+**Opción A: varias comprobaciones (recomendada).** Más legible y permite decir exactamente qué falta:
+
+```php
+$password = $_POST['password'] ?? '';   // ¡sin trim! Los espacios pueden formar parte de la contraseña
+
+if (mb_strlen($password) < 8) {
+    $errores[] = "Debe tener al menos 8 caracteres.";
+}
+if (!preg_match('/[A-Z]/', $password)) {
+    $errores[] = "Debe contener al menos una mayúscula.";
+}
+if (!preg_match('/[a-z]/', $password)) {
+    $errores[] = "Debe contener al menos una minúscula.";
+}
+if (!preg_match('/[0-9]/', $password)) {
+    $errores[] = "Debe contener al menos un número.";
+}
+if (!preg_match('/[^a-zA-Z0-9]/', $password)) {
+    $errores[] = "Debe contener al menos un símbolo (!, @, #, ...).";
+}
+```
+
+Aquí **no** se usan `^` ni `$`: solo queremos saber si el carácter aparece **en algún sitio**.
+
+| Entrada | Resultado |
+|---|---|
+| `hola` | ❌ corta, sin mayúscula, sin número, sin símbolo |
+| `Hola1234` | ❌ sin símbolo |
+| `Hola123!` | ✅ |
+
+**Opción B: un solo patrón** (para reconocerlo si aparece en internet):
+
+```php
+if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$/', $password)) {
+    $errores[] = "La contraseña no cumple los requisitos.";
+}
+```
+
+Cada `(?=.*X)` es una comprobación anticipada (*lookahead*): "en algún punto del texto hay una X". `.{8,}` exige 8 caracteres o más. Funciona, pero es difícil de leer y solo permite un mensaje de error genérico.
+
+> **Recordatorio:** la contraseña nunca se guarda tal cual. Se guarda `password_hash($password, PASSWORD_DEFAULT)` y se comprueba con `password_verify()`.
+
+### Consejos
+
+1. **Probad los patrones en [regex101.com](https://regex101.com)** con el sabor *PCRE2 (PHP)*.
+2. **Usad comillas simples** para los patrones cuando podáis: con dobles, PHP interpreta algunas `\` y `$` antes que la expresión regular.
+3. **Modificador `u` siempre** que el texto pueda llevar tildes o ñ.
+4. **Validar no es escapar.** Aunque un dato pase `preg_match()`, al mostrarlo se usa `htmlspecialchars()` y al guardarlo, consultas preparadas.
+5. **HTML5 puede usar el mismo patrón** con el atributo `pattern="..."` del `<input>`, pero la validación en el servidor sigue siendo obligatoria.
+---
 ## Sanitizar datos introducidos por usuarios
 
 Cualquier dato introducido en la página por los usuarios lo tenemos que considerar **poco seguro** y, por lo tanto, nunca debemos confiar en que no puede resultar en un ataque.
@@ -181,8 +440,9 @@ Para solucionarlo, envolvemos la entrada del usuario con `htmlspecialchars()`:
 if (isset($_POST["nombre"]) && !empty($_POST["nombre"])) {
     $nombre = htmlspecialchars($_POST["nombre"]);
 } else {
-    echo "<div class='alert alert-error' role='alert'>❌ Error: Debe rellenar el campo nombre correctamente</div>";
-    header("Refresh:5; url=form_example.php");
+     $_SESSION['error'] = "El nombre es obligatorio.";
+    header("Location: form_example.php");
+    exit;
 }
 ```
 
@@ -265,8 +525,8 @@ if (
     !isset($_SESSION['csrf_token']) ||
     $_POST['csrf_token'] !== $_SESSION['csrf_token']
 ) {
-    echo "<div class='alert alert-danger'>❌ Error: petición no válida.</div>";
-    header("Refresh:2; url=form_example.php");
+    $_SESSION['error'] = "Petición no válida.";
+    header("Location: form_example.php");
     exit;
 }
 
