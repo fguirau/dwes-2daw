@@ -337,9 +337,9 @@ echo strrev($s2);       // otxet ed anedac artO
 ---
 
 ### 2.3.5.3 Actividad 1  Gamificación - String Escape Room
-    En aules tenéis disponible esta actividad:
-    ![Actividad 1  Gamificación - String Escape Room](img/escape_room1.png){ .center }
-    ![Actividad 1  Gamificación - String Escape Room](img/escape_room2.png){ .center }
+En aules tenéis disponible esta actividad:
+![Actividad 1  Gamificación - String Escape Room](img/escape_room1.png){ .center }
+![Actividad 1  Gamificación - String Escape Room](img/escape_room2.png){ .center }
 
 ---
 
