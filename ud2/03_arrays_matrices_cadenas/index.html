@@ -834,6 +834,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#2352-funciones-interesantes-para-strings-en-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.5.2 Funciones interesantes para strings en PHP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2353-actividad-1-gamificacion-string-escape-room" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.5.3 Actividad 1 Gamificación - String Escape Room
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1994,6 +2016,52 @@ Para <strong>juegos o simulaciones</strong>: <code>mt_rand()</code> o <code>rand
 <p class="admonition-title">Más funciones de string</p>
 <p>La documentación completa está en <a href="https://es.php.net/manual/es/ref.strings.php">es.php.net/manual/es/ref.strings.php</a>.</p>
 </div>
+<hr />
+<h3 id="2352-funciones-interesantes-para-strings-en-php">2.3.5.2 Funciones interesantes para strings en PHP</h3>
+<ul>
+<li><code>chr</code> — Generar un string de un byte a partir de un número</li>
+<li><code>htmlspecialchars</code> — Convierte caracteres especiales en entidades HTML</li>
+<li><code>explode</code> — Divide una string en segmentos</li>
+<li><code>implode</code> — Une elementos de un array en un string</li>
+<li><code>join</code> — Alias de <code>implode</code></li>
+<li><code>ltrim</code> — Elimina los espacios (u otros caracteres) del inicio de un string</li>
+<li><code>number_format</code> — Formatea un número para su visualización</li>
+<li><code>intval()</code> — Obtiene el valor entero de una variable. Esta puede ser cadena, float…</li>
+<li><code>rtrim</code> — Elimina los espacios (u otros caracteres) al final de un string</li>
+<li><code>sha1</code> — Calcula el sha1 de un string</li>
+<li><code>str_pad</code> — Completa un string hasta un tamaño dado</li>
+<li><code>str_repeat</code> — Repite un string</li>
+<li><code>str_replace</code> — Reemplaza todas las ocurrencias en una string</li>
+<li><code>str_rot13</code> — Realiza una transformación ROT13</li>
+<li><code>str_shuffle</code> — Mezcla los caracteres de un string</li>
+<li><code>str_split</code> — Convierte un string en un array</li>
+<li><code>str_contains</code> — Determina si una cadena contiene un substring dado</li>
+<li><code>strcmp</code> — Comparación binaria de strings</li>
+<li><code>stripslashes</code> — Quita las barras de un string con comillas escapadas</li>
+<li><code>strlen</code> — Calcula el tamaño de un string</li>
+<li><code>strpos</code> — Busca la posición de la primera ocurrencia en un string</li>
+<li><code>strrchr</code> — Encuentra la última ocurrencia de un carácter en un string</li>
+<li><code>strrev</code> — Invierte un string</li>
+<li><code>strripos</code> — Busca la posición de la última ocurrencia de un string contenido en otro, de forma insensible a mayúsculas y minúsculas</li>
+<li><code>strrpos</code> — Busca la posición de la última ocurrencia de una subcadena en una cadena</li>
+<li><code>strtolower</code> — Devuelve una string en minúsculas</li>
+<li><code>strtoupper</code> — Devuelve una string en mayúsculas</li>
+<li><code>strtr</code> — Reemplaza caracteres en un string</li>
+<li><code>substr</code> — Devuelve un segmento de string</li>
+<li><code>trim</code> — Elimina los espacios (u otros caracteres) al inicio y al final de un string</li>
+<li><code>ucfirst</code> — Pone en mayúscula el primer carácter</li>
+<li><code>ucwords</code> — Pone en mayúscula la primera letra de todas las palabras</li>
+</ul>
+<blockquote>
+<p><strong>Nota.</strong> Las funciones <code>mb_*</code> (<em>Multi-Byte String</em>) en PHP están diseñadas para manejar cadenas de texto que utilizan codificaciones de caracteres multibyte, como UTF-8.</p>
+<p>A diferencia de las funciones nativas estándar (como <code>strlen</code> o <code>strpos</code>), que asumen que cada carácter ocupa exactamente 1 byte (codificación ASCII o ISO-8859-1), las funciones <code>mb_*</code> calculan la longitud y la posición basándose en los caracteres reales, sin importar cuántos bytes ocupe cada uno. Si trabajas con eñes (ñ), acentos (á), emojis (iconos) o caracteres asiáticos, las funciones estándar te darán resultados incorrectos porque esos caracteres ocupan 2, 3 o 4 bytes.   </p>
+</blockquote>
+<hr />
+<h3 id="2353-actividad-1-gamificacion-string-escape-room">2.3.5.3 Actividad 1  Gamificación - String Escape Room</h3>
+<div class="highlight"><pre><span></span><code>En aules tenéis disponible esta actividad:
+![Actividad 1  Gamificación - String Escape Room](img/escape_room1.png){ .center }
+![Actividad 1  Gamificación - String Escape Room](img/escape_room2.png){ .center }
+</code></pre></div>
 <hr />
 <h2 id="resumen-de-la-unidad">Resumen de la unidad</h2>
 <table>
