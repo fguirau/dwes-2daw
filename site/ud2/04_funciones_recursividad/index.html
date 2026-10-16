@@ -1770,9 +1770,11 @@ Las cuatro sirven para insertar el contenido de otro archivo PHP dentro del actu
 <a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="x">    $productos = obtenerProductos($pdo);</span>
 </code></pre></div>
 <p>En otro archivo, <strong>funciones.php</strong>, incluimos el archivo anterior utilizando <strong>require_once</strong>. Y en <strong>index.php</strong>, incluimos ambos archivos. Si en <strong>funciones.php</strong> hubieras usado <strong>require 'conexion.php';</strong> (sin once), al llegar a <strong>index.php</strong> se incluiría dos veces, y si <strong>conexion.php</strong> declarara una clase o función, PHP lanzaría un error de <strong>"Cannot redeclare"</strong></p>
-<p>!!! Tip:
-    Usa require_once para todo lo que el script necesita para funcionar (conexión a BD, autoload de clases, funciones esenciales): si falta, mejor que el programa pare con un error claro a que siga a medias.
-    Usa include (rara vez include_once) solo para elementos opcionales o decorativos, como un banner o widget que si no existe no rompe la página.</p>
+<div class="admonition info">
+<p class="admonition-title">Tip</p>
+<p>Usa require_once para todo lo que el script necesita para funcionar (conexión a BD, autoload de clases, funciones esenciales): si falta, mejor que el programa pare con un error claro a que siga a medias.
+Usa include (rara vez include_once) solo para elementos opcionales o decorativos, como un banner o widget que si no existe no rompe la página.</p>
+</div>
 <hr />
 <h2 id="242-manejo-de-excepciones">2.4.2. Manejo de excepciones</h2>
 <p>Una <strong>excepción</strong> es un error que ocurre durante la ejecución del programa. PHP permite capturarlas con <code>try-catch-finally</code> para que el programa no se detenga inesperadamente.</p>
