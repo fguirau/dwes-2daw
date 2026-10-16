@@ -773,6 +773,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#2416-include-y-require" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4.1.6 include y require
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1703,55 +1714,115 @@
 </table>
 </div>
 <hr />
+<h3 id="2416-include-y-require">2.4.1.6 include y require</h3>
+<p>En <strong>PHP</strong> tenemos 4 funciones: <strong>include, include_once, require, require_once</strong>.
+Las cuatro sirven para insertar el contenido de otro archivo PHP dentro del actual (típico para separar header, footer, conexión a BD, funciones comunes...). La diferencia está en dos ejes: qué pasa si el archivo no existe y si se puede incluir más de una vez.</p>
+<div class="admonition info">
+<p class="admonition-title">Tabla comparativa</p>
+<table>
+<thead>
+<tr>
+<th>Sentencia</th>
+<th>si falla</th>
+<th>¿Permite duplicados?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>include</td>
+<td><strong>warning</strong>, el script continúa ejecutándose</td>
+<td><strong>Sí</strong></td>
+</tr>
+<tr>
+<td>require</td>
+<td><strong>Fatal error</strong>, el script se detiene</td>
+<td><strong>Sí</strong></td>
+</tr>
+<tr>
+<td>include_once</td>
+<td><strong>warning</strong>, continúa</td>
+<td><strong>No (ignora si ya se incluyó)</strong></td>
+</tr>
+<tr>
+<td>require_once</td>
+<td><strong>Fatal error</strong>, se detiene</td>
+<td><strong>No (ignora si ya se incluyó)</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Vamos a ver un ejemplo de como utilizar require_once.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="x">    $pdo = new PDO( "mysql:host=localhost;dbname=tienda", "root", "");</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="x">    //funciones.php</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="x">    require_once('conexion.php');</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="x">    //Conecta a la BD, necesaria para las funciones</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="x">    function obtenerProductos(PDO $pdo): array{</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="x">        return $pdo-&gt;query('SELECT * FROM productos')-&gt;fetchAll();</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="x">    }</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="x">    //index.php</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="x">    require_once('conexion.php');</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="x">    require_once('funciones.php');</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="x">    //funciones.php también hace require_once de conexion.php,</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="x">    //pero como ya se incluyó, PHP lo ignora (evita error de 'variable ya definida')</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="x">    $productos = obtenerProductos($pdo);</span>
+</code></pre></div>
+<p>En otro archivo, <strong>funciones.php</strong>, incluimos el archivo anterior utilizando <strong>require_once</strong>. Y en <strong>index.php</strong>, incluimos ambos archivos. Si en <strong>funciones.php</strong> hubieras usado <strong>require 'conexion.php';</strong> (sin once), al llegar a <strong>index.php</strong> se incluiría dos veces, y si <strong>conexion.php</strong> declarara una clase o función, PHP lanzaría un error de <strong>"Cannot redeclare"</strong></p>
+<p>!!! Tip:
+    Usa require_once para todo lo que el script necesita para funcionar (conexión a BD, autoload de clases, funciones esenciales): si falta, mejor que el programa pare con un error claro a que siga a medias.
+    Usa include (rara vez include_once) solo para elementos opcionales o decorativos, como un banner o widget que si no existe no rompe la página.</p>
+<hr />
 <h2 id="242-manejo-de-excepciones">2.4.2. Manejo de excepciones</h2>
 <p>Una <strong>excepción</strong> es un error que ocurre durante la ejecución del programa. PHP permite capturarlas con <code>try-catch-finally</code> para que el programa no se detenga inesperadamente.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="x">try {</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="x">    // código que puede lanzar una excepción</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="x">} catch (TipoExcepcion $e) {</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="x">    // código que se ejecuta si ocurre la excepción</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="x">} finally {</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="x">    // código que se ejecuta SIEMPRE (con o sin excepción)</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="x">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="x">try {</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="x">    // código que puede lanzar una excepción</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="x">} catch (TipoExcepcion $e) {</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="x">    // código que se ejecuta si ocurre la excepción</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="x">} finally {</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="x">    // código que se ejecuta SIEMPRE (con o sin excepción)</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="x">}</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Bloques opcionales</p>
 <p>Se puede omitir <code>catch</code> o <code>finally</code>, pero <strong>no ambos</strong> a la vez.</p>
 </div>
 <h3 id="2421-ejemplo-division-por-cero">2.4.2.1 Ejemplo: división por cero</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="x">function dividir($a, $b) {</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="x">    if ($b == 0) {</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="x">        throw new Exception("No se puede dividir por cero.");</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="x">    }</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="x">    return $a / $b;</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="x">}</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="x">$resultado = 0;</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="x">try {</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="x">    // código que puede lanzar una excepción</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="x">    $resultado = dividir(10, 0);</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="x">} catch (Exception $e) {</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="x">    // capturamos la excepción y mostramos el mensaje</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="x">    echo "Ocurrió un error: " . $e-&gt;getMessage();</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="x">} finally {</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="x">    // se ejecuta siempre, tanto si hay excepción como si no</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="x">    echo $resultado;</span>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="x">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="x">function dividir($a, $b) {</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="x">    if ($b == 0) {</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="x">        throw new Exception("No se puede dividir por cero.");</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="x">    }</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="x">    return $a / $b;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="x">}</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="x">$resultado = 0;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="x">try {</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="x">    // código que puede lanzar una excepción</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="x">    $resultado = dividir(10, 0);</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="x">} catch (Exception $e) {</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="x">    // capturamos la excepción y mostramos el mensaje</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="x">    echo "Ocurrió un error: " . $e-&gt;getMessage();</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="x">} finally {</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="x">    // se ejecuta siempre, tanto si hay excepción como si no</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="x">    echo $resultado;</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="x">}</span>
 </code></pre></div>
 <p><strong>Salida:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Ocurrió un error: No se puede dividir por cero.
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Ocurrió un error: No se puede dividir por cero.
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>0
 </code></pre></div></p>
 <hr />
 <h2 id="243-recursividad">2.4.3. Recursividad</h2>
 <p>Una <strong>función recursiva</strong> es aquella que <strong>se llama a sí misma</strong> durante su ejecución. Es la base de los algoritmos <em>Divide y Vencerás</em>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="x">function funcRecursiva($listaParametros) {</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="x">    // ...</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="x">    funcRecursiva($listaParametros);  // llamada a sí misma</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="x">    // ...</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="x">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="x">function funcRecursiva($listaParametros) {</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="x">    // ...</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="x">    funcRecursiva($listaParametros);  // llamada a sí misma</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="x">    // ...</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="x">}</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Condición de parada obligatoria</p>
@@ -1760,37 +1831,37 @@
 <hr />
 <h3 id="2431-ejemplo-factorial">2.4.3.1 Ejemplo: factorial</h3>
 <p>El factorial se define como:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>n! = n × (n-1) × (n-2) × ... × 1
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>0! = 1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>n! = n × (n-1) × (n-2) × ... × 1
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>0! = 1
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="x">function factorial($num) {</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="x">    if ($num == 0)             // caso base: 0! = 1</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="x">        return 1;</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="x">    else                       // llamada recursiva: n * factorial(n-1)</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="x">        return $num * factorial($num - 1);</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="x">}</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="x">echo factorial(5);   // 120</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="x">echo factorial(3);   // 6</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="x">function factorial($num) {</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="x">    if ($num == 0)             // caso base: 0! = 1</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="x">        return 1;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="x">    else                       // llamada recursiva: n * factorial(n-1)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="x">        return $num * factorial($num - 1);</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="x">}</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="x">echo factorial(5);   // 120</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="x">echo factorial(3);   // 6</span>
 </code></pre></div>
 <hr />
 <h3 id="2432-como-se-ejecuta-paso-a-paso">2.4.3.2 Cómo se ejecuta paso a paso</h3>
 <p>Llamada a <code>factorial(3)</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>factorial(3)
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>│
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>├─► return 3 * factorial(2)
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>│             │
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>│             ├─► return 2 * factorial(1)
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>│             │             │
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>│             │             ├─► return 1 * factorial(0)
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>│             │             │             │
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>│             │             │             └─► return 1   ← caso base
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>│             │             │
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>│             │             └─► return 1  (1 × 1)
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>│             │
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>│             └─► return 2  (2 × 1)
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>│
-<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>└─► return 6  (3 × 2)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>factorial(3)
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>│
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>├─► return 3 * factorial(2)
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>│             │
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>│             ├─► return 2 * factorial(1)
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>│             │             │
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>│             │             ├─► return 1 * factorial(0)
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>│             │             │             │
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>│             │             │             └─► return 1   ← caso base
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>│             │             │
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>│             │             └─► return 1  (1 × 1)
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>│             │
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>│             └─► return 2  (2 × 1)
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>│
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>└─► return 6  (3 × 2)
 </code></pre></div>
 <p>El resultado final es <strong>6</strong>.</p>
 <hr />
