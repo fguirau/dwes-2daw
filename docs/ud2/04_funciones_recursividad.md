@@ -139,8 +139,8 @@ Vamos a ver un ejemplo de como utilizar require_once.
 En otro archivo, **funciones.php**, incluimos el archivo anterior utilizando **require_once**. Y en **index.php**, incluimos ambos archivos. Si en **funciones.php** hubieras usado **require 'conexion.php';** (sin once), al llegar a **index.php** se incluiría dos veces, y si **conexion.php** declarara una clase o función, PHP lanzaría un error de **"Cannot redeclare"**
 
 !!! info "Tip"
-    Usa **require_once** para todo lo que el script necesita para funcionar (conexión a BD, autoload de clases, funciones esenciales): si falta, mejor que el programa pare con un error claro a que siga a medias.
-    Usa **include** (rara vez **include_once**) solo para elementos opcionales o decorativos, como un banner o widget que si no existe no rompe la página.
+    Usa `**require_once**` para todo lo que el script necesita para funcionar (conexión a BD, autoload de clases, funciones esenciales): si falta, mejor que el programa pare con un error claro a que siga a medias.
+    Usa `**include**` (rara vez `**include_once**`) solo para elementos opcionales o decorativos, como un banner o widget que si no existe no rompe la página.
 
 ---
 ## 2.4.2. Manejo de excepciones
