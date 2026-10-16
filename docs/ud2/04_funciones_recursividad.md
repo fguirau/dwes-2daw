@@ -103,7 +103,46 @@ echo $num;   // 10 → la variable original ha cambiado
     | Por referencia | `function f(&$x)` | **Sí cambia** |
 
 ---
+### 2.4.1.6 include y require
+En **PHP** tenemos 4 funciones: **include, include_once, require, require_once**.
+Las cuatro sirven para insertar el contenido de otro archivo PHP dentro del actual (típico para separar header, footer, conexión a BD, funciones comunes...). La diferencia está en dos ejes: qué pasa si el archivo no existe y si se puede incluir más de una vez.
 
+!!! info "Tabla comparativa"
+    | Sentencia | si falla | ¿Permite duplicados? |
+    |---|---|---|
+    | include | **warning**, el script continúa ejecutándose | **Sí** |
+    | require | **Fatal error**, el script se detiene | **Sí** |
+    | include_once | **warning**, continúa | **No (ignora si ya se incluyó)** |
+    | require_once | **Fatal error**, se detiene | **No (ignora si ya se incluyó)** |
+
+Vamos a ver un ejemplo de como utilizar require_once.
+
+```php
+    $pdo = new PDO( "mysql:host=localhost;dbname=tienda", "root", "");
+
+    //funciones.php
+    require_once('conexion.php');
+    //Conecta a la BD, necesaria para las funciones
+    function obtenerProductos(PDO $pdo): array{
+        return $pdo->query('SELECT * FROM productos')->fetchAll();
+    }
+
+    //index.php
+    require_once('conexion.php');
+    require_once('funciones.php');
+    //funciones.php también hace require_once de conexion.php,
+    //pero como ya se incluyó, PHP lo ignora (evita error de 'variable ya definida')
+
+    $productos = obtenerProductos($pdo);
+```
+
+En otro archivo, **funciones.php**, incluimos el archivo anterior utilizando **require_once**. Y en **index.php**, incluimos ambos archivos. Si en **funciones.php** hubieras usado **require 'conexion.php';** (sin once), al llegar a **index.php** se incluiría dos veces, y si **conexion.php** declarara una clase o función, PHP lanzaría un error de **"Cannot redeclare"**
+
+!!! Tip:
+    Usa require_once para todo lo que el script necesita para funcionar (conexión a BD, autoload de clases, funciones esenciales): si falta, mejor que el programa pare con un error claro a que siga a medias.
+    Usa include (rara vez include_once) solo para elementos opcionales o decorativos, como un banner o widget que si no existe no rompe la página.
+
+---
 ## 2.4.2. Manejo de excepciones
 
 Una **excepción** es un error que ocurre durante la ejecución del programa. PHP permite capturarlas con `try-catch-finally` para que el programa no se detenga inesperadamente.
