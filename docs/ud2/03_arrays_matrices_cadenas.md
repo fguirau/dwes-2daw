@@ -296,6 +296,53 @@ echo strrev($s2);       // otxet ed anedac artO
 
 ---
 
+### 2.3.5.2 Funciones interesantes para strings en PHP
+- `chr` — Generar un string de un byte a partir de un número
+- `htmlspecialchars` — Convierte caracteres especiales en entidades HTML
+- `explode` — Divide una string en segmentos
+- `implode` — Une elementos de un array en un string
+- `join` — Alias de `implode`
+- `ltrim` — Elimina los espacios (u otros caracteres) del inicio de un string
+- `number_format` — Formatea un número para su visualización
+- `intval()` — Obtiene el valor entero de una variable. Esta puede ser cadena, float…
+- `rtrim` — Elimina los espacios (u otros caracteres) al final de un string
+- `sha1` — Calcula el sha1 de un string
+- `str_pad` — Completa un string hasta un tamaño dado
+- `str_repeat` — Repite un string
+- `str_replace` — Reemplaza todas las ocurrencias en una string
+- `str_rot13` — Realiza una transformación ROT13
+- `str_shuffle` — Mezcla los caracteres de un string
+- `str_split` — Convierte un string en un array
+- `str_contains` — Determina si una cadena contiene un substring dado
+- `strcmp` — Comparación binaria de strings
+- `stripslashes` — Quita las barras de un string con comillas escapadas
+- `strlen` — Calcula el tamaño de un string
+- `strpos` — Busca la posición de la primera ocurrencia en un string
+- `strrchr` — Encuentra la última ocurrencia de un carácter en un string
+- `strrev` — Invierte un string
+- `strripos` — Busca la posición de la última ocurrencia de un string contenido en otro, de forma insensible a mayúsculas y minúsculas
+- `strrpos` — Busca la posición de la última ocurrencia de una subcadena en una cadena
+- `strtolower` — Devuelve una string en minúsculas
+- `strtoupper` — Devuelve una string en mayúsculas
+- `strtr` — Reemplaza caracteres en un string
+- `substr` — Devuelve un segmento de string
+- `trim` — Elimina los espacios (u otros caracteres) al inicio y al final de un string
+- `ucfirst` — Pone en mayúscula el primer carácter
+- `ucwords` — Pone en mayúscula la primera letra de todas las palabras
+
+> **Nota.** Las funciones `mb_*` (*Multi-Byte String*) en PHP están diseñadas para manejar cadenas de texto que utilizan codificaciones de caracteres multibyte, como UTF-8.
+>
+> A diferencia de las funciones nativas estándar (como `strlen` o `strpos`), que asumen que cada carácter ocupa exactamente 1 byte (codificación ASCII o ISO-8859-1), las funciones `mb_*` calculan la longitud y la posición basándose en los caracteres reales, sin importar cuántos bytes ocupe cada uno. Si trabajas con eñes (ñ), acentos (á), emojis (iconos) o caracteres asiáticos, las funciones estándar te darán resultados incorrectos porque esos caracteres ocupan 2, 3 o 4 bytes.   
+    
+---
+
+### 2.3.5.3 Actividad 1  Gamificación - String Escape Room
+    En aules tenéis disponible esta actividad:
+    ![Actividad 1  Gamificación - String Escape Room](img/escape_room1.png){ .center }
+    ![Actividad 1  Gamificación - String Escape Room](img/escape_room2.png){ .center }
+
+---
+
 ## Resumen de la unidad
 
 | Concepto | PHP |
